@@ -10,20 +10,18 @@ exports.getAllStages = async ctx => {
   } catch (err) {
     ctx.status = 500;
   }
-}
+};
 
 exports.getStage = async ctx => {
   try {
     console.log('request to get one stage');
-    const jobappid = ctx.request.params.id;
     const stageid = ctx.request.params.stageid;
-    ctx.body = await jobstage.getStage(jobappid, stageid);
+    ctx.body = await jobstage.getStage(stageid);
     ctx.status = 200;
   } catch (err) {
     ctx.status = 500;
   }
-
-}
+};
 
 exports.createStage = async ctx => {
   try {
@@ -35,18 +33,17 @@ exports.createStage = async ctx => {
   } catch (err) {
     ctx.status = 500;
   }
-}
+};
 
 exports.editStage = async ctx => {
   try {
     console.log('request to edit stage');
     const stage = ctx.request.body;
     const stageid = ctx.request.params.stageid;
-    const jobappid = ctx.request.params.id;
-    const updated = await jobstage.editStage(jobappid, stageid, stage);
+    const updated = await jobstage.editStage(stageid, stage);
     ctx.status = 201;
     ctx.body = updated;
   } catch (err) {
     ctx.status = 500;
   }
-}
+};
