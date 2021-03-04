@@ -2,7 +2,7 @@ const jobapp = require('../models/jobapp');
 
 exports.getAllJobs = async ctx => {
   try {
-    console.log('received get request');
+    // console.log('received get request');
     ctx.body = await jobapp.getAll();
     ctx.status = 200;
   } catch (err) {

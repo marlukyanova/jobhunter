@@ -2,9 +2,20 @@ const client = require('./index');
 
 exports.getAll = async () => {
   // console.log('getting all jobapps from db');
-  const res = await client.query('select * from jobapp');
-  // console.log(res.rows);
-  return res.rows;
+  const queryRes = await client.query('select * from jobapp');
+  const res = queryRes.rows.map(row => {
+    return {
+      id: row.id,
+      createdat: row.createdat,
+      position: row.position,
+      company: row.company,
+      appliedat: row.appliedat,
+      state: row.state,
+      stage: row.stage
+    }
+  });
+  // console.log(res);
+  return res;
 }
 
 exports.getJobApp = async (id) => {
