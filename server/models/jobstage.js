@@ -2,17 +2,33 @@ const client = require('./index');
 
 exports.getAll = async (id) => {
   // console.log('running query');
-  const res = await client.query('select * from jobstage where jobappid = $1', [id]);
+  const queryRes = await client.query('select * from jobstage where jobappid = $1', [id]);
   // console.log(res.rows);
-  return res.rows;
+  const res = queryRes.rows.map(row => {
+    return {
+      id: row.id,
+      createdat: new Date(row.createdat),
+      type: row.type,
+      date: new Date(row.date)
+    }
+  })
+  return res;
 }
 
 exports.getStage = async (stageid) => {
-  const res = await client.query('select * from jobstage where and id = $1', [stageid]);
-  return res.rows;
+  const queryRes = await client.query('select * from jobstage where and id = $1', [stageid]);
+  const res = {
+    id: queryRes.rows[0].id,
+    createdat: new Date(queryRes.rows[0].createdat),
+    type: queryRes.rows[0].type,
+    date: new Date(queryRes.rows[0].date),
+    addinfo: queryRes.rows[0].addinfo
+  }
+  return res;
 }
 
 exports.createStage = async (id, stage) => {
+  //TODO: check transactions in postgres
   const query = `
                 WITH src AS (
                   INSERT INTO jobstage(type, date, addinfo, jobappid)
@@ -34,6 +50,7 @@ exports.createStage = async (id, stage) => {
 
 exports.editStage = async (stageid, stage) => {
   // console.log('running query', stageid, stage);
+  //TODO: check transactions in postgres
   const query = `
                 WITH src AS (
                   UPDATE jobstage

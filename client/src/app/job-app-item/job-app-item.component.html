@@ -1,1 +1,65 @@
-<p>job-app-item works!</p>
+<div *ngIf="jobApp">
+
+  <div>
+    <h1>{{jobApp.position}}</h1>
+    <h4>{{jobApp.company}}</h4>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">New Stage</button>
+    <button mat-raised-button color="warn">Close</button>
+  </div>
+
+  <div>
+
+    <form>
+      <mat-form-field class="example-full-width">
+        <mat-label>Company</mat-label>
+        <input matInput placeholder="Company" value={{jobApp.company}} required>
+      </mat-form-field>
+    </form>
+
+    <form>
+      <mat-form-field class="example-full-width">
+        <mat-label>Job Title</mat-label>
+        <input matInput placeholder="Job Title" value={{jobApp.position}} required>
+      </mat-form-field>
+    </form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <select matNativeControl (change)="selectState($event)" required>
+        <option *ngFor="let state of states" [value]="state.value"
+                [selected]="selectedState === state.value">{{ state.viewValue }}</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Stage</mat-label>
+      <select matNativeControl (change)="selectStage($event)" required>
+        <option *ngFor="let stage of stages" [value]="stage.value"
+                [selected]="selectedStage === stage.value">{{ stage.viewValue }}</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose application date</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Application Date" [(ngModel)]="jobApp.appliedat" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Description" value={{jobApp.description}}></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Additional Information</mat-label>
+      <textarea matInput placeholder="Additional information" value={{jobApp.addinfo}}></textarea>
+    </mat-form-field>
+
+  </div>
+
+  <app-job-stage-list [appstages]="appstages"></app-job-stage-list>
+
+</div>

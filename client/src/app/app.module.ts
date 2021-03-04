@@ -11,7 +11,11 @@ import { JobStageItemComponent } from './job-stage-item/job-stage-item.component
 import { JobStageListComponent } from './job-stage-list/job-stage-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -27,9 +31,16 @@ import { MatTableModule } from '@angular/material/table'
     HttpClientModule,
     FormsModule,
     NoopAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

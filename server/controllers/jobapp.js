@@ -12,6 +12,7 @@ exports.getAllJobs = async ctx => {
 
 exports.getJobApp = async ctx => {
   try {
+    // console.log('received get request for jobapp');
     const id = ctx.request.params.id;
     ctx.body = await jobapp.getJobApp(id);
     ctx.status = 200;

@@ -1,14 +1,14 @@
 export class JobApp {
   'id': number;
-  'createdat': string;
+  'createdat': number;
   'position': string;
   'company': string;
   'description': string;
-  'appliedat': string;
+  'appliedat': number;
   'state': string;
   'stage': string;
   'source': string;
   'addinfo': string;
-  'closedat': string;
+  'closedat': number;
   'closedreason': string;
 }

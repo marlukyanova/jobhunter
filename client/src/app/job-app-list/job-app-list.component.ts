@@ -12,7 +12,7 @@ export class JobAppListComponent implements OnInit {
 
   jobapps: JobApp[] = [];
 
-  displayedColumns: string[] = ['position', 'company', 'appliedat', 'state', 'stage'];
+  displayedColumns: string[] = ['position', 'company', 'appliedat', 'state', 'stage', 'view'];
   dataSource = this.jobapps;
 
   constructor(private apiClient: ApiClientService) { }
