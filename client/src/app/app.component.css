@@ -1,0 +1,13 @@
+mat-toolbar {
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+span {
+  color: #3f51b5;
+  font-size: 25px;
+  font-weight: 580;
+}

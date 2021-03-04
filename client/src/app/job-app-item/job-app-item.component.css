@@ -1,0 +1,39 @@
+.jobappform {
+  width: 68%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.top {
+  margin-bottom: 10px;;
+}
+
+.title {
+
+}
+
+.buttons {
+  position: absolute;
+  right: 10px;
+}
+
+button {
+  margin: 5px;
+}
+
+.jobappinfo {
+  margin-top: 10px;;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-right: 10px;
+}

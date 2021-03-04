@@ -1,65 +1,89 @@
-<div *ngIf="jobApp">
+<div *ngIf="jobApp" class = "jobappform">
 
-  <div>
-    <h1>{{jobApp.position}}</h1>
-    <h4>{{jobApp.company}}</h4>
-  </div>
-  <div>
-    <button mat-raised-button color="primary">New Stage</button>
-    <button mat-raised-button color="warn">Close</button>
-  </div>
+  <mat-card>
+    <mat-card-header class="top">
+      <div class="title">
+        <mat-card-title>{{jobApp.position}}</mat-card-title>
+        <mat-card-subtitle>{{jobApp.company}}</mat-card-subtitle> 
+      </div>
+      <div class="buttons">
+        <button mat-raised-button color="primary">New Stage</button>
+        <button mat-raised-button color="primary">Save Changes</button>
+        <button mat-raised-button color="warn">Close Job App</button>
+      </div>
+    </mat-card-header>
 
-  <div>
 
-    <form>
-      <mat-form-field class="example-full-width">
-        <mat-label>Company</mat-label>
-        <input matInput placeholder="Company" value={{jobApp.company}} required>
-      </mat-form-field>
+    <mat-card-content class="jobappinfo">
+      <form>
+      <div class="column">
+        <div class="row">
+          <mat-form-field class="form-field">
+            <mat-label>Company</mat-label>
+            <input matInput placeholder="Company" value={{jobApp.company}} required>
+          </mat-form-field>
+
+          <mat-form-field class="form-field">
+            <mat-label>Job Title</mat-label>
+            <input matInput placeholder="Job Title" value={{jobApp.position}} required>
+          </mat-form-field>
+        </div>
+        
+        <div class="row">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>State</mat-label>
+            <select matNativeControl (change)="selectState($event)" required>
+              <option *ngFor="let state of states" [value]="state.value"
+                      [selected]="selectedState === state.value">{{ state.viewValue }}</option>
+            </select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Stage</mat-label>
+            <select matNativeControl (change)="selectStage($event)" required>
+              <option *ngFor="let stage of stages" [value]="stage.value"
+                      [selected]="selectedStage === stage.value">{{ stage.viewValue }}</option>
+            </select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Choose application date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Application Date" [(ngModel)]="jobApp.appliedat" name="appliedat" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Closed date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Closed Date" [(ngModel)]="jobApp.closedat" name="closedat">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" value={{jobApp.description}}></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Additional Information</mat-label>
+          <textarea matInput placeholder="Additional information" value={{jobApp.addinfo}}></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Reason for closing</mat-label>
+          <textarea matInput placeholder="Reason" value={{jobApp.closedreason}}></textarea>
+        </mat-form-field>
+
+      </div>
     </form>
+    </mat-card-content>
 
-    <form>
-      <mat-form-field class="example-full-width">
-        <mat-label>Job Title</mat-label>
-        <input matInput placeholder="Job Title" value={{jobApp.position}} required>
-      </mat-form-field>
-    </form>
 
-    <mat-form-field appearance="fill">
-      <mat-label>State</mat-label>
-      <select matNativeControl (change)="selectState($event)" required>
-        <option *ngFor="let state of states" [value]="state.value"
-                [selected]="selectedState === state.value">{{ state.viewValue }}</option>
-      </select>
-    </mat-form-field>
+    <app-job-stage-list [appstages]="appstages"></app-job-stage-list>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Stage</mat-label>
-      <select matNativeControl (change)="selectStage($event)" required>
-        <option *ngFor="let stage of stages" [value]="stage.value"
-                [selected]="selectedStage === stage.value">{{ stage.viewValue }}</option>
-      </select>
-    </mat-form-field>
+  </mat-card>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Choose application date</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="Application Date" [(ngModel)]="jobApp.appliedat" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <textarea matInput placeholder="Description" value={{jobApp.description}}></textarea>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Additional Information</mat-label>
-      <textarea matInput placeholder="Additional information" value={{jobApp.addinfo}}></textarea>
-    </mat-form-field>
-
-  </div>
-
-  <app-job-stage-list [appstages]="appstages"></app-job-stage-list>
 
 </div>
