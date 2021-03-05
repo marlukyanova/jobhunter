@@ -28,7 +28,7 @@ exports.getJobApp = async (id) => {
     position: queryRes.rows[0].position,
     company: queryRes.rows[0].company,
     appliedat: new Date(queryRes.rows[0].appliedat),
-    state: queryRes.rows[0].stage,
+    state: queryRes.rows[0].state,
     stage: queryRes.rows[0].stage,
     description: queryRes.rows[0].description,
     source: queryRes.rows[0].source,
