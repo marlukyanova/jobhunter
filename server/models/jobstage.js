@@ -16,7 +16,9 @@ exports.getAll = async (id) => {
 }
 
 exports.getStage = async (stageid) => {
-  const queryRes = await client.query('select * from jobstage where and id = $1', [stageid]);
+  // console.log('running a query for stageid', stageid);
+  const queryRes = await client.query('select * from jobstage where id = $1', [stageid]);
+  // console.log(queryRes.rows);
   const res = {
     id: queryRes.rows[0].id,
     createdat: new Date(queryRes.rows[0].createdat),

@@ -46,7 +46,7 @@ export class JobAppItemComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       const id = +params.id;
       this.apiClient.getJobApp(id).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.jobApp = data;
       this.selectedState = this.jobApp.state;
       this.selectedStage = this.jobApp.stage;
@@ -66,7 +66,7 @@ export class JobAppItemComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       const id = +params.id;
     this.apiClient.getAllJobStages(id).subscribe(data => {
-      console.log(data)
+      // console.log(data)
       this.appstages = data;
     });
   });

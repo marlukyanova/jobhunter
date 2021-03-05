@@ -22,15 +22,12 @@
     <!-- Details Button -->
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let appstage"><a mat-raised-button color="primary" routerLink='/stage/{{appstage.id}}'>Details</a></td>
+      <td mat-cell *matCellDef="let appstage"><a mat-raised-button color="primary" routerLink='/jobapp/{{jobid}}/stage/{{appstage.id}}'>Details</a></td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  <router-outlet></router-outlet>
-  
+  </table> 
 
 </div>
 

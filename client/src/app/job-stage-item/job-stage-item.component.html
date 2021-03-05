@@ -1,1 +1,40 @@
-<p>job-stage-item works!</p>
+<div *ngIf="jobStage" class="jobstageform"> 
+
+  <mat-card>
+    <mat-card-header>
+      <button mat-raised-button color="primary">Save Changes</button>
+    </mat-card-header>
+
+    <mat-card-content class="jobstageinfo">
+      <form>
+        <div class="column">
+        <mat-form-field class="form-field">
+          <mat-label>Stage</mat-label>
+          <input matInput placeholder="Company" value={{jobStage.type}} required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Stage Added Date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Stage Added" [(ngModel)]="jobStage.createdat" name="createdat" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="jobStage.date" name="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Additional Information</mat-label>
+          <textarea matInput cdkTextareaAutosize placeholder="Additional Info" value={{jobStage.addinfo}}></textarea>
+        </mat-form-field>
+      </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+
+</div>
