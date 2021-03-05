@@ -40,14 +40,14 @@ exports.getJobApp = async (id) => {
 }
 
 exports.createJobApp = async (job) => {
-  const query = `INSERT INTO jobapp(createdat, position, company, description, appliedat, source, addinfo) 
-                 VALUES (to_timestamp($1 / 1000.0), $2, $3, $4, to_timestamp($5 / 1000.0), $6, $7)
+  const query = `INSERT INTO jobapp(createdat, position, company, appliedat, description, addinfo) 
+                 VALUES ($1, $2, $3, $4, $5, $6)
                  RETURNING *;`
-  const values = [new Date(Date.now()).toISOString(), job.position, job.company, job.description, new Date(job.appliedat).toISOString(), job.source, job.addinfo];
-  console.log('creating new job in db with values', values);
+  const values = [new Date(Date.now()).toISOString(), job.position, job.company, new Date(job.appliedat).toISOString(), job.description, job.addinfo];
+  // console.log('creating new job in db with values', values);
   const res = await client.query(query, values);
-  // console.log(res.rows);
-  return res.rows;
+  // console.log('result', res.rows[0]);
+  return res.rows[0];
 }
 
 exports.editJobApp = async (id, job) => {

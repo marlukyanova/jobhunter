@@ -18,6 +18,7 @@ export class ApiClientService {
   }
 
   getJobApp(id: number): Observable<JobApp> {
+    console.log('sending request...');
     return this.http.get<JobApp>(`${this.baseURL}/jobapp/${id}`);
   }
 
@@ -28,12 +29,9 @@ export class ApiClientService {
   getJobStage(jobappid: number, jobstage: number): Observable<JobStage> {
     return this.http.get<JobStage>(`${this.baseURL}/jobapp/${jobappid}/stage/${jobstage}`);
   }
-  // postTopic(topic: Topic): Observable<Topic> {
-  //   return this.http.post<Topic>('http://localhost:3000/', topic);
-  // }
 
-  // deleteTopic(topic: Topic): void {
-  //   // return this.http.delete('http://localhost:3000/', topic);
-  // }
+  postJobApp(jobApp: JobApp): Observable<JobApp> {
+    return this.http.post<JobApp>(`${this.baseURL}/jobapp/new`, jobApp);
+  }
 
 }

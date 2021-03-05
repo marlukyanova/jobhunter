@@ -1,5 +1,5 @@
-<div *ngIf="dataloaded" class = "jobappform">
-  <form [formGroup]="jobAppForm">
+<div *ngIf="jobAppForm" class="jobappform">
+  <form [formGroup]="jobAppForm" (ngSubmit)="onSubmit()">
     
     <mat-card>
 
@@ -8,10 +8,10 @@
           <mat-card-title>{{jobAppForm.value.position}}</mat-card-title>
           <mat-card-subtitle>{{jobAppForm.value.company}}</mat-card-subtitle> 
         </div>
-        <div class="buttons">
-          <button mat-raised-button color="primary">New Stage</button>
-          <button mat-raised-button color="primary">Save Changes</button>
-          <button mat-raised-button color="warn">Close Job App</button>
+        <div class="buttons row">
+          <div *ngIf="!isAddMode"><button mat-raised-button color="primary">New Stage</button></div>
+          <div><button mat-raised-button color="primary">Save Changes</button></div>
+          <!-- <button mat-raised-button color="warn">Close Job App</button> -->
         </div>
       </mat-card-header>
 
@@ -32,10 +32,6 @@
           <div class="row">
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>State</mat-label>
-              <!-- <select matNativeControl (change)="selectState($event)" required>
-                <option *ngFor="let state of states" [value]="state.value"
-                        [selected]="selectedState === state.value">{{ state.viewValue }}</option>
-              </select> -->
               <select matNativeControl formControlName="state" name="state">
                 <option *ngFor="let state of states" [value]="state">{{state}}</option>
               </select>
@@ -43,10 +39,6 @@
 
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>Stage</mat-label>
-              <!-- <select matNativeControl (change)="selectStage($event)" required>
-                <option *ngFor="let stage of stages" [value]="stage.value"
-                        [selected]="selectedStage === stage.value">{{ stage.viewValue }}</option>
-              </select> -->
               <select matNativeControl formControlName="stage" name="stage">
                 <option *ngFor="let stage of stages" [value]="stage">{{stage}}</option>
               </select>
@@ -59,12 +51,11 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
-            <!-- [(ngModel)]="jobApp.closedat" -->
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>Closed date</mat-label>
-              <input matInput [matDatepicker]="picker" placeholder="Closed Date" formControlName="closedat" name="closedat">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <input matInput [matDatepicker]="picker1" placeholder="Closed Date" formControlName="closedat" name="closedat">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
           </div>
 
@@ -87,7 +78,7 @@
 
       </mat-card-content>
 
-      <div *ngIf="jobid">
+      <div *ngIf="jobid && !isAddMode">
         <app-job-stage-list [appstages]="appstages" [jobid]="jobid"></app-job-stage-list>
       </div>
 

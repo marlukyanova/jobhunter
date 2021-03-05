@@ -1,5 +1,9 @@
 <div class="jobapplist">
 
+  <div class="buttons">
+    <a class="add" mat-raised-button color="accent" routerLink='jobapp/new'>Add JobApp</a>
+  </div>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
     <!-- Title Column -->
     <ng-container matColumnDef="position">
