@@ -23,7 +23,7 @@ exports.getJobApp = async ctx => {
 
 exports.createJobApp = async ctx => {
   try {
-    console.log('new request to create a jobapp');
+    // console.log('new request to create a jobapp');
     const job = ctx.request.body;
     // console.log(job);
     const newJob = await jobapp.createJobApp(job);
@@ -39,6 +39,7 @@ exports.editJobApp = async ctx => {
   try {
     // console.log('request to update a jobapp');
     const job = ctx.request.body;
+    // console.log(job);
     const id = ctx.request.params.id;
     const updated = await jobapp.editJobApp(id, job);
     ctx.status = 201;

@@ -30,8 +30,12 @@ export class ApiClientService {
     return this.http.get<JobStage>(`${this.baseURL}/jobapp/${jobappid}/stage/${jobstage}`);
   }
 
-  postJobApp(jobApp: JobApp): Observable<JobApp> {
+  createJobApp(jobApp: JobApp): Observable<JobApp> {
     return this.http.post<JobApp>(`${this.baseURL}/jobapp/new`, jobApp);
+  }
+
+  updateJobApp(jobApp: JobApp, id: number): Observable<JobApp> {
+    return this.http.put<JobApp>(`${this.baseURL}/jobapp/${id}`, jobApp);
   }
 
 }

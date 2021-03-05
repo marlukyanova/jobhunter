@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
-// import { JobApp } from '../jobapp';
 import { JobStage } from '../jobstage';
 
 @Component({
@@ -18,7 +17,6 @@ export class JobAppItemComponent implements OnInit {
 
   jobAppForm?: FormGroup;
 
-  // jobApp?: JobApp;
   appstages: JobStage[] = [];
   jobid?: number;
   isAddMode?: boolean;
@@ -49,31 +47,26 @@ export class JobAppItemComponent implements OnInit {
     else {
       this.jobid = urlParam;
       this.isAddMode = false;
-      console.log(this.jobid);
-      console.log('editing: ', this.isAddMode);
       this.getJobApp();
       this.getJobAppStages();
     }
   }
 
   getJobApp(): void {
-    console.log('starting getjobapp request...');
     this.route.params.forEach((params: Params) => {
       const id = +params.id;
       this.apiClient.getJobApp(id).subscribe(data => {
-        console.log(data);
-        // this.jobApp = data;
         this.jobAppForm = new FormGroup({
-          position: new FormControl(data.position ? `${data.position}` : ''),
-          company: new FormControl(data.company ?`${data.company}` : ''),
-          description: new FormControl(data.description ? `${data.description}` : ''),
-          appliedat: new FormControl(data.appliedat ? `${data.appliedat}` : new Date(Date.now())),
-          state: new FormControl(data.state ? `${data.state}` : 'Passive'),
-          stage: new FormControl(data.stage ? `${data.stage}` : 'Applied'),
-          source: new FormControl(data.source ? `${data.source}` : ''),
-          addinfo: new FormControl(data.addinfo ? `${data.addinfo}` : ''),
-          closedat: new FormControl(data.closedreason ? `${data.closedat}` : ''),
-          closedreason: new FormControl(data.closedreason ? `${data.closedreason}` : '')
+          position: new FormControl(data.position ? data.position : ''),
+          company: new FormControl(data.company ? data.company : ''),
+          description: new FormControl(data.description ? data.description : ''),
+          appliedat: new FormControl(data.appliedat ? data.appliedat : new Date(Date.now())),
+          state: new FormControl(data.state ? data.state : 'Passive'),
+          stage: new FormControl(data.stage ? data.stage : 'Applied'),
+          source: new FormControl(data.source ? data.source : ''),
+          addinfo: new FormControl(data.addinfo ? data.addinfo : ''),
+          closedat: new FormControl(data.closedreason ? data.closedat : ''),
+          closedreason: new FormControl(data.closedreason ? data.closedreason : '')
         });
     });
   });
@@ -83,14 +76,12 @@ export class JobAppItemComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       const id = +params.id;
     this.apiClient.getAllJobStages(id).subscribe(data => {
-      // console.log(data)
       this.appstages = data;
     });
   });
   }
 
-  onSubmit() {
-    console.log(this.jobAppForm);
+  saveChanges() {
     if (this.isAddMode) {
       this.createJobApp();
     } else {
@@ -99,9 +90,9 @@ export class JobAppItemComponent implements OnInit {
   }
   
   createJobApp() {
-    if (this.jobAppForm !== undefined) this.apiClient.postJobApp(this.jobAppForm.value).subscribe({
+    if (this.jobAppForm !== undefined) this.apiClient.createJobApp(this.jobAppForm.value).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigateByUrl('/');
       },
       error: error => {
         console.log(error);
@@ -110,7 +101,15 @@ export class JobAppItemComponent implements OnInit {
   }
 
   updateJobApp() {
-
+    if (this.jobAppForm !== undefined && this.jobid !== undefined) 
+      this.apiClient.updateJobApp(this.jobAppForm.value, this.jobid).subscribe({
+        next: () => {
+          this.router.navigateByUrl(`/jobapp/${this.jobid}`);
+        },
+        error: error => {
+          console.log(error);
+        }
+      });
   }
 
 }

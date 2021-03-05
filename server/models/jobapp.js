@@ -69,7 +69,8 @@ exports.editJobApp = async (id, job) => {
                 RETURNING *;
                 `
   const values = [job.position, job.company, job.description, job.appliedat, job.state, job.stage, job.source, job.addinfo, job.closedat, job.closedreason, id];
+  // console.log('updating with values', values);
   const res = await client.query(query, values);
-  // console.log(res.rows);
+  // console.log(res.rows[0]);
   return res.rows;
 }

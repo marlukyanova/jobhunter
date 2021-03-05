@@ -1,5 +1,5 @@
 <div *ngIf="jobAppForm" class="jobappform">
-  <form [formGroup]="jobAppForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="jobAppForm" >
     
     <mat-card>
 
@@ -10,7 +10,7 @@
         </div>
         <div class="buttons row">
           <div *ngIf="!isAddMode"><button mat-raised-button color="primary">New Stage</button></div>
-          <div><button mat-raised-button color="primary">Save Changes</button></div>
+          <div><button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button></div>
           <!-- <button mat-raised-button color="warn">Close Job App</button> -->
         </div>
       </mat-card-header>
