@@ -2,7 +2,7 @@ const jobstage = require('../models/jobstage');
 
 exports.getAllStages = async ctx => {
   try {
-    console.log('request to get all stages for job');
+    // console.log('request to get all stages for job');
     const jobappid = ctx.request.params.id;
     // console.log(jobappid);
     ctx.body = await jobstage.getAll(jobappid);
@@ -14,7 +14,7 @@ exports.getAllStages = async ctx => {
 
 exports.getStage = async ctx => {
   try {
-    console.log('request to get one stage');
+    // console.log('request to get one stage');
     const stageid = ctx.request.params.stageid;
     ctx.body = await jobstage.getStage(stageid);
     ctx.status = 200;

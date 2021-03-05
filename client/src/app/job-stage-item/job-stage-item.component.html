@@ -1,4 +1,4 @@
-<div *ngIf="jobStage" class="jobstageform"> 
+<div *ngIf="dataloaded" class="jobstageform"> 
 
   <mat-card>
     <mat-card-header>
@@ -6,30 +6,30 @@
     </mat-card-header>
 
     <mat-card-content class="jobstageinfo">
-      <form>
+      <form [formGroup]="jobStageForm">
         <div class="column">
         <mat-form-field class="form-field">
           <mat-label>Stage</mat-label>
-          <input matInput placeholder="Company" value={{jobStage.type}} required>
+          <input matInput placeholder="Company" formControlName="stage" required>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Stage Added Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Stage Added" [(ngModel)]="jobStage.createdat" name="createdat" required>
+          <input matInput [matDatepicker]="picker" placeholder="Stage Added" formControlName="createdat" name="createdat" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="jobStage.date" name="date">
+          <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date" name="date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Additional Information</mat-label>
-          <textarea matInput cdkTextareaAutosize placeholder="Additional Info" value={{jobStage.addinfo}}></textarea>
+          <textarea matInput cdkTextareaAutosize placeholder="Additional Info" formControlName="addinfo"></textarea>
         </mat-form-field>
       </div>
       </form>
