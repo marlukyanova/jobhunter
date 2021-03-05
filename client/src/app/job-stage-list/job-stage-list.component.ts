@@ -10,8 +10,9 @@ import { JobStage } from '../jobstage';
 export class JobStageListComponent implements OnChanges {
 
   @Input() appstages!: JobStage[];
+  @Input() jobid!: number;
 
-  displayedColumns: string[] = ['type', 'createdat', 'date'];
+  displayedColumns: string[] = ['type', 'createdat', 'date', 'view'];
   dataSource: JobStage[] = [];
 
   constructor() { }
@@ -20,4 +21,5 @@ export class JobStageListComponent implements OnChanges {
     this.dataSource = this.appstages;
   }
 
+  
 }

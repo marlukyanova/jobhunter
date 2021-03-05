@@ -14,17 +14,17 @@ import { JobStage } from '../jobstage';
 })
 export class JobAppItemComponent implements OnInit {
   states: State[] = [
-    {value: 'A', viewValue: 'Active'},
-    {value: 'P', viewValue: 'Passive'},
-    {value: 'C', viewValue: 'Closed'}
+    {value: 'Active', viewValue: 'Active'},
+    {value: 'Passive', viewValue: 'Passive'},
+    {value: 'Closed', viewValue: 'Closed'}
   ];
 
   stages: Stage[] = [
     {value: 'Applied', viewValue: 'Applied'},
-    {value: 'PS', viewValue: 'Phone Screen'},
-    {value: 'HA', viewValue: 'Home Assignment'},
-    {value: 'I', viewValue: 'Interview'},
-    {value: 'O', viewValue: 'Offer'}
+    {value: 'Phone Screen', viewValue: 'Phone Screen'},
+    {value: 'Home Assignment', viewValue: 'Home Assignment'},
+    {value: 'Interview', viewValue: 'Interview'},
+    {value: 'Offer', viewValue: 'Offer'}
   ]
 
   jobApp?: JobApp;
@@ -71,5 +71,5 @@ export class JobAppItemComponent implements OnInit {
     });
   });
   }
-
+ 
 }

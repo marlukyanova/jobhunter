@@ -8,8 +8,12 @@
   margin-bottom: 10px;;
 }
 
-.title {
+.mat-card-header .mat-card-title {
+  font-size: 26px;
+}
 
+mat-card-subtitle {
+  font-size: 18px;
 }
 
 .buttons {

@@ -63,17 +63,17 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Description" value={{jobApp.description}}></textarea>
+          <textarea matInput cdkTextareaAutosize placeholder="Description" value={{jobApp.description}}></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Additional Information</mat-label>
-          <textarea matInput placeholder="Additional information" value={{jobApp.addinfo}}></textarea>
+          <textarea matInput cdkTextareaAutosize placeholder="Additional information" value={{jobApp.addinfo}}></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Reason for closing</mat-label>
-          <textarea matInput placeholder="Reason" value={{jobApp.closedreason}}></textarea>
+          <textarea matInput cdkTextareaAutosize placeholder="Reason" value={{jobApp.closedreason}}></textarea>
         </mat-form-field>
 
       </div>
@@ -81,7 +81,7 @@
     </mat-card-content>
 
 
-    <app-job-stage-list [appstages]="appstages"></app-job-stage-list>
+    <app-job-stage-list [appstages]="appstages" [jobid]="jobApp.id"></app-job-stage-list>
 
   </mat-card>
 
