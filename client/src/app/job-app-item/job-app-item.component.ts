@@ -112,4 +112,8 @@ export class JobAppItemComponent implements OnInit {
       });
   }
 
+  createStage() {
+    this.router.navigateByUrl(`/jobapp/${this.jobid}/stage/new`);
+  }
+
 }

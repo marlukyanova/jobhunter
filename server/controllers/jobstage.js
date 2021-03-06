@@ -27,6 +27,7 @@ exports.createStage = async ctx => {
   try {
     const jobappid = ctx.request.params.id;
     const stage = ctx.request.body;
+    // console.log('request to create new jobstage for job', jobappid, 'with data', stage);
     const newstage = await jobstage.createStage(jobappid, stage);
     ctx.body = newstage;
     ctx.status = 201;
@@ -37,7 +38,7 @@ exports.createStage = async ctx => {
 
 exports.editStage = async ctx => {
   try {
-    console.log('request to edit stage');
+    // console.log('request to edit stage');
     const stage = ctx.request.body;
     const stageid = ctx.request.params.stageid;
     const updated = await jobstage.editStage(stageid, stage);

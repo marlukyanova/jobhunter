@@ -1,17 +1,20 @@
-<div *ngIf="dataloaded" class="jobstageform"> 
+<div *ngIf="jobStageForm" class="jobstageform"> 
 
   <mat-card>
     <mat-card-header>
-      <button mat-raised-button color="primary">Save Changes</button>
+      <button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button>
     </mat-card-header>
 
     <mat-card-content class="jobstageinfo">
       <form [formGroup]="jobStageForm">
+
         <div class="column">
-        <mat-form-field class="form-field">
-          <mat-label>Stage</mat-label>
-          <input matInput placeholder="Company" formControlName="stage" required>
-        </mat-form-field>
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Stage</mat-label>
+            <select matNativeControl formControlName="stage" name="stage">
+              <option *ngFor="let stage of stages" [value]="stage">{{stage}}</option>
+            </select>
+          </mat-form-field>
 
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Stage Added Date</mat-label>
@@ -22,9 +25,9 @@
 
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date" name="date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <input matInput [matDatepicker]="picker2" placeholder="Date" formControlName="date" name="date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill">

@@ -7,7 +7,7 @@ const router = new Router();
 
 router.get('/jobapp', jobapp.getAllJobs);
 router.get('/jobapp/:id', jobapp.getJobApp);
-router.post('/jobapp/new', jobapp.createJobApp);
+router.post('/jobapp', jobapp.createJobApp);
 router.put('/jobapp/:id', jobapp.editJobApp);
 
 router.get('/jobapp/:id/stage', jobstage.getAllStages);

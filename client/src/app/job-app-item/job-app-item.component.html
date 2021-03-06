@@ -9,7 +9,7 @@
           <mat-card-subtitle>{{jobAppForm.value.company}}</mat-card-subtitle> 
         </div>
         <div class="buttons row">
-          <div *ngIf="!isAddMode"><button mat-raised-button color="primary">New Stage</button></div>
+          <div *ngIf="!isAddMode"><button mat-raised-button color="primary" (click)="createStage()">New Stage</button></div>
           <div><button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button></div>
           <!-- <button mat-raised-button color="warn">Close Job App</button> -->
         </div>

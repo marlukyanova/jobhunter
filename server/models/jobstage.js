@@ -33,8 +33,8 @@ exports.createStage = async (id, stage) => {
   //TODO: check transactions in postgres
   const query = `
                 WITH src AS (
-                  INSERT INTO jobstage(type, date, addinfo, jobappid)
-                          VALUES ($1, $2, $3, $4)
+                  INSERT INTO jobstage(createdat, type, date, addinfo, jobappid)
+                          VALUES ($1, $2, $3, $4, $5)
                           RETURNING *
                   )
                 UPDATE jobapp j
@@ -42,12 +42,15 @@ exports.createStage = async (id, stage) => {
                   stage = src.type,
                   state = 'Active'
                 FROM src
-                WHERE j.id = src.jobappid;
+                WHERE j.id = src.jobappid
+                RETURNING *;
                 `
-  const values = [stage.type, stage.date, stage.addinfo, id];
+  const values = [new Date(Date.now()).toISOString(), stage.stage, stage.date, stage.addinfo, parseInt(id)];
+  // console.log('running a request with values', values);
   const res = await client.query(query, values);
+  // console.log(res.rows[0]);
   //TODO: return jobapp and stage
-  return res.rows;
+  return res.rows[0];
 }
 
 exports.editStage = async (stageid, stage) => {
@@ -70,9 +73,9 @@ exports.editStage = async (stageid, stage) => {
                 FROM src
                 WHERE j.id = src.jobappid
                 RETURNING *;`
-  const values = [stage.type, stage.date, stage.addinfo, stageid];
+  const values = [stage.stage, stage.date, stage.addinfo, parseInt(stageid)];
   const res = await client.query(query, values);
-  console.log(res.rows);
+  // console.log(res.rows[0]);
   //TODO: decide what to return, ideally return updated jobapp and updated stage
-  return res.rows;
+  return res.rows[0];
 }

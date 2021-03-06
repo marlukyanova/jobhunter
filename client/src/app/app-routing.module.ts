@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'jobapp/:id', component: JobAppItemComponent},
   {path: 'jobapp/new', component: JobAppItemComponent},
   {path: 'jobapp/:id/stage/:stageid', component: JobStageItemComponent},
+  {path: 'jobapp/:id/stage/new', component: JobStageItemComponent},
 ];
 
 @NgModule({

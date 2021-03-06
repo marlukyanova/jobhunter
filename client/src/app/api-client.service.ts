@@ -31,11 +31,19 @@ export class ApiClientService {
   }
 
   createJobApp(jobApp: JobApp): Observable<JobApp> {
-    return this.http.post<JobApp>(`${this.baseURL}/jobapp/new`, jobApp);
+    return this.http.post<JobApp>(`${this.baseURL}/jobapp`, jobApp);
   }
 
   updateJobApp(jobApp: JobApp, id: number): Observable<JobApp> {
     return this.http.put<JobApp>(`${this.baseURL}/jobapp/${id}`, jobApp);
+  }
+
+  createJobStage(id: number, jobStage: JobStage): Observable<JobStage> {
+    return this.http.post<JobStage>(`${this.baseURL}/jobapp/${id}/stage`, jobStage);
+  }
+
+  updateJobStage(id: number, stageid: number, jobStage: JobStage): Observable<JobStage> {
+    return this.http.put<JobStage>(`${this.baseURL}/jobapp/${id}/stage/${stageid}`, jobStage);
   }
 
 }
