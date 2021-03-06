@@ -1,6 +1,6 @@
-const jobapp = require('../models/jobapp');
+const jobapp = require("../models/jobapp");
 
-exports.getAllJobs = async ctx => {
+exports.getAllJobs = async (ctx) => {
   try {
     // console.log('received get request');
     ctx.body = await jobapp.getAll();
@@ -8,9 +8,9 @@ exports.getAllJobs = async ctx => {
   } catch (err) {
     ctx.status = 500;
   }
-}
+};
 
-exports.getJobApp = async ctx => {
+exports.getJobApp = async (ctx) => {
   try {
     // console.log('received get request for jobapp');
     const id = ctx.request.params.id;
@@ -19,9 +19,9 @@ exports.getJobApp = async ctx => {
   } catch (err) {
     ctx.status = 500;
   }
-}
+};
 
-exports.createJobApp = async ctx => {
+exports.createJobApp = async (ctx) => {
   try {
     // console.log('new request to create a jobapp');
     const job = ctx.request.body;
@@ -33,9 +33,9 @@ exports.createJobApp = async ctx => {
   } catch (err) {
     ctx.status = 500;
   }
-}
+};
 
-exports.editJobApp = async ctx => {
+exports.editJobApp = async (ctx) => {
   try {
     // console.log('request to update a jobapp');
     const job = ctx.request.body;
@@ -47,4 +47,4 @@ exports.editJobApp = async ctx => {
   } catch (err) {
     ctx.status = 500;
   }
-}
+};

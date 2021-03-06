@@ -10,7 +10,7 @@ describe('JobAppItemComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ JobAppItemComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

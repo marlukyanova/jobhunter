@@ -5,12 +5,12 @@ const client = new Client({
   host: 'localhost',
   database: 'JobHunter',
   password: '',
-  port: 5432
+  port: 5432,
 });
 
 client
   .connect()
   .then(() => console.log('connected to DB'))
-  .catch(err => console.error('connection error'))
+  .catch((err) => console.error('connection error'));
 
 module.exports = client;

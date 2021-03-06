@@ -1,46 +1,72 @@
-<div *ngIf="jobStageForm" class="jobstageform"> 
-
+<div *ngIf="jobStageForm" class="jobstageform">
   <mat-card>
     <mat-card-header>
       <div class="buttons row">
-        <button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button>
-        <button mat-raised-button color="primary" (click)="returnToJobApp()">Back</button>
+        <button mat-raised-button color="primary" (click)="saveChanges()">
+          Save Changes
+        </button>
+        <button mat-raised-button color="primary" (click)="returnToJobApp()">
+          Back
+        </button>
       </div>
     </mat-card-header>
 
     <mat-card-content class="jobstageinfo">
       <form [formGroup]="jobStageForm">
-
         <div class="column">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>Stage</mat-label>
             <select matNativeControl formControlName="stage" name="stage">
-              <option *ngFor="let stage of stages" [value]="stage">{{stage}}</option>
+              <option *ngFor="let stage of stages" [value]="stage">
+                {{ stage }}
+              </option>
             </select>
           </mat-form-field>
 
-        <mat-form-field appearance="fill" class="form-field">
-          <mat-label>Stage Added Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Stage Added" formControlName="createdat" name="createdat" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Stage Added Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              placeholder="Stage Added"
+              formControlName="createdat"
+              name="createdat"
+              required
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill" class="form-field">
-          <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker2" placeholder="Date" formControlName="date" name="date">
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker2"
+              placeholder="Date"
+              formControlName="date"
+              name="date"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Additional Information</mat-label>
-          <textarea matInput cdkTextareaAutosize placeholder="Additional Info" formControlName="addinfo"></textarea>
-        </mat-form-field>
-      </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Additional Information</mat-label>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              placeholder="Additional Info"
+              formControlName="addinfo"
+            ></textarea>
+          </mat-form-field>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>
-
-
 </div>

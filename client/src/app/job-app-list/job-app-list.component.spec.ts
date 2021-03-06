@@ -10,7 +10,7 @@ describe('JobAppListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ JobAppListComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

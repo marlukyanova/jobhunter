@@ -6,12 +6,12 @@ import { JobApp } from './jobapp';
 import { JobStage } from './jobstage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiClientService {
   private baseURL = 'http://localhost:3001';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllJobApps(): Observable<JobApp[]> {
     return this.http.get<JobApp[]>(`${this.baseURL}/jobapp`);
@@ -23,11 +23,15 @@ export class ApiClientService {
   }
 
   getAllJobStages(jobappid: number): Observable<JobStage[]> {
-    return this.http.get<JobStage[]>(`${this.baseURL}/jobapp/${jobappid}/stage`);
+    return this.http.get<JobStage[]>(
+      `${this.baseURL}/jobapp/${jobappid}/stage`
+    );
   }
 
   getJobStage(jobappid: number, jobstage: number): Observable<JobStage> {
-    return this.http.get<JobStage>(`${this.baseURL}/jobapp/${jobappid}/stage/${jobstage}`);
+    return this.http.get<JobStage>(
+      `${this.baseURL}/jobapp/${jobappid}/stage/${jobstage}`
+    );
   }
 
   createJobApp(jobApp: JobApp): Observable<JobApp> {
@@ -39,11 +43,20 @@ export class ApiClientService {
   }
 
   createJobStage(id: number, jobStage: JobStage): Observable<JobStage> {
-    return this.http.post<JobStage>(`${this.baseURL}/jobapp/${id}/stage`, jobStage);
+    return this.http.post<JobStage>(
+      `${this.baseURL}/jobapp/${id}/stage`,
+      jobStage
+    );
   }
 
-  updateJobStage(id: number, stageid: number, jobStage: JobStage): Observable<JobStage> {
-    return this.http.put<JobStage>(`${this.baseURL}/jobapp/${id}/stage/${stageid}`, jobStage);
+  updateJobStage(
+    id: number,
+    stageid: number,
+    jobStage: JobStage
+  ): Observable<JobStage> {
+    return this.http.put<JobStage>(
+      `${this.baseURL}/jobapp/${id}/stage/${stageid}`,
+      jobStage
+    );
   }
-
 }

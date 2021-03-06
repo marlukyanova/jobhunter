@@ -1,16 +1,22 @@
 <div *ngIf="jobAppForm" class="jobappform">
-  <form [formGroup]="jobAppForm" >
-    
+  <form [formGroup]="jobAppForm">
     <mat-card>
-
       <mat-card-header class="top">
         <div class="title">
-          <mat-card-title>{{jobAppForm.value.position}}</mat-card-title>
-          <mat-card-subtitle>{{jobAppForm.value.company}}</mat-card-subtitle> 
+          <mat-card-title>{{ jobAppForm.value.position }}</mat-card-title>
+          <mat-card-subtitle>{{ jobAppForm.value.company }}</mat-card-subtitle>
         </div>
         <div class="buttons row">
-          <div *ngIf="!isAddMode"><button mat-raised-button color="primary" (click)="createStage()">New Stage</button></div>
-          <div><button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button></div>
+          <div *ngIf="!isAddMode">
+            <button mat-raised-button color="primary" (click)="createStage()">
+              New Stage
+            </button>
+          </div>
+          <div>
+            <button mat-raised-button color="primary" (click)="saveChanges()">
+              Save Changes
+            </button>
+          </div>
           <!-- <button mat-raised-button color="warn">Close Job App</button> -->
         </div>
       </mat-card-header>
@@ -20,68 +26,116 @@
           <div class="row">
             <mat-form-field class="form-field">
               <mat-label>Company</mat-label>
-              <input matInput placeholder="Company" formControlName="company" required>
+              <input
+                matInput
+                placeholder="Company"
+                formControlName="company"
+                required
+              />
             </mat-form-field>
 
             <mat-form-field class="form-field">
               <mat-label>Job Title</mat-label>
-              <input matInput placeholder="Job Title" formControlName="position" required>
+              <input
+                matInput
+                placeholder="Job Title"
+                formControlName="position"
+                required
+              />
             </mat-form-field>
           </div>
-          
+
           <div class="row">
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>State</mat-label>
               <select matNativeControl formControlName="state" name="state">
-                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                <option *ngFor="let state of states" [value]="state">
+                  {{ state }}
+                </option>
               </select>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>Stage</mat-label>
               <select matNativeControl formControlName="stage" name="stage">
-                <option *ngFor="let stage of stages" [value]="stage">{{stage}}</option>
+                <option *ngFor="let stage of stages" [value]="stage">
+                  {{ stage }}
+                </option>
               </select>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>Choose application date</mat-label>
-              <input matInput [matDatepicker]="picker" placeholder="Application Date" formControlName="appliedat" name="appliedat" required>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="Application Date"
+                formControlName="appliedat"
+                name="appliedat"
+                required
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="form-field">
               <mat-label>Closed date</mat-label>
-              <input matInput [matDatepicker]="picker1" placeholder="Closed Date" formControlName="closedat" name="closedat">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <input
+                matInput
+                [matDatepicker]="picker1"
+                placeholder="Closed Date"
+                formControlName="closedat"
+                name="closedat"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker1"
+              ></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
           </div>
 
           <mat-form-field appearance="fill">
             <mat-label>Description</mat-label>
-            <textarea matInput cdkTextareaAutosize placeholder="Description" formControlName="description"></textarea>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              placeholder="Description"
+              formControlName="description"
+            ></textarea>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Additional Information</mat-label>
-            <textarea matInput cdkTextareaAutosize placeholder="Additional information" formControlName="addinfo"></textarea>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              placeholder="Additional information"
+              formControlName="addinfo"
+            ></textarea>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Reason for closing</mat-label>
-            <textarea matInput cdkTextareaAutosize placeholder="Reason" formControlName="closedreason"></textarea>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              placeholder="Reason"
+              formControlName="closedreason"
+            ></textarea>
           </mat-form-field>
-
         </div>
-
       </mat-card-content>
 
       <div *ngIf="jobid && !isAddMode">
-        <app-job-stage-list [appstages]="appstages" [jobid]="jobid"></app-job-stage-list>
+        <app-job-stage-list
+          [appstages]="appstages"
+          [jobid]="jobid"
+        ></app-job-stage-list>
       </div>
-
     </mat-card>
   </form>
 </div>

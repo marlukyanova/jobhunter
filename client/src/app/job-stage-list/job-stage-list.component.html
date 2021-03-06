@@ -1,33 +1,41 @@
 <div class="jobstages">
-
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Stage Column -->
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Interview Stage </th>
-      <td mat-cell *matCellDef="let appstage"> {{appstage.type}} </td>
+      <th mat-header-cell *matHeaderCellDef>Interview Stage</th>
+      <td mat-cell *matCellDef="let appstage">{{ appstage.type }}</td>
     </ng-container>
 
     <!-- Stage Added column -->
     <ng-container matColumnDef="createdat">
-      <th mat-header-cell *matHeaderCellDef> Stage added </th>
-      <td mat-cell *matCellDef="let appstage"> {{appstage.createdat | date: 'MMM d, y'}} </td>
+      <th mat-header-cell *matHeaderCellDef>Stage added</th>
+      <td mat-cell *matCellDef="let appstage">
+        {{ appstage.createdat | date: "MMM d, y" }}
+      </td>
     </ng-container>
-  
+
     <!-- Date Column -->
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td mat-cell *matCellDef="let appstage"> {{appstage.date | date: 'MMM d, y'}} </td>
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let appstage">
+        {{ appstage.date | date: "MMM d, y" }}
+      </td>
     </ng-container>
 
     <!-- Details Button -->
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let appstage"><a mat-raised-button color="primary" routerLink='/jobapp/{{jobid}}/stage/{{appstage.id}}'>Details</a></td>
+      <td mat-cell *matCellDef="let appstage">
+        <a
+          mat-raised-button
+          color="primary"
+          routerLink="/jobapp/{{ jobid }}/stage/{{ appstage.id }}"
+          >Details</a
+        >
+      </td>
     </ng-container>
-  
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table> 
-
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
-

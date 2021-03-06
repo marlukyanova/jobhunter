@@ -1,9 +1,9 @@
-const client = require('./index');
+const client = require("./index");
 
 exports.getAll = async () => {
   // console.log('getting all jobapps from db');
-  const queryRes = await client.query('select * from jobapp');
-  const res = queryRes.rows.map(row => {
+  const queryRes = await client.query("select * from jobapp");
+  const res = queryRes.rows.map((row) => {
     return {
       id: row.id,
       createdat: new Date(row.createdat),
@@ -11,16 +11,16 @@ exports.getAll = async () => {
       company: row.company,
       appliedat: new Date(row.appliedat),
       state: row.state,
-      stage: row.stage
-    }
+      stage: row.stage,
+    };
   });
   // console.log(res);
   return res;
-}
+};
 
 exports.getJobApp = async (id) => {
   // console.log('running db query');
-  const queryRes = await client.query('select * from jobapp where id=$1', [id]);
+  const queryRes = await client.query("select * from jobapp where id=$1", [id]);
   // console.log(res.rows[0]);
   const res = {
     id: queryRes.rows[0].id,
@@ -34,21 +34,28 @@ exports.getJobApp = async (id) => {
     source: queryRes.rows[0].source,
     addinfo: queryRes.rows[0].addinfo,
     closedat: new Date(queryRes.rows[0].closedat),
-    closedreason: queryRes.rows[0].closedreason
-  }
+    closedreason: queryRes.rows[0].closedreason,
+  };
   return res;
-}
+};
 
 exports.createJobApp = async (job) => {
   const query = `INSERT INTO jobapp(createdat, position, company, appliedat, description, addinfo) 
                  VALUES ($1, $2, $3, $4, $5, $6)
-                 RETURNING *;`
-  const values = [new Date(Date.now()).toISOString(), job.position, job.company, new Date(job.appliedat).toISOString(), job.description, job.addinfo];
+                 RETURNING *;`;
+  const values = [
+    new Date(Date.now()).toISOString(),
+    job.position,
+    job.company,
+    new Date(job.appliedat).toISOString(),
+    job.description,
+    job.addinfo,
+  ];
   // console.log('creating new job in db with values', values);
   const res = await client.query(query, values);
   // console.log('result', res.rows[0]);
   return res.rows[0];
-}
+};
 
 exports.editJobApp = async (id, job) => {
   // console.log('data to update', job);
@@ -67,10 +74,22 @@ exports.editJobApp = async (id, job) => {
                   closedreason = $10
                 WHERE id = $11
                 RETURNING *;
-                `
-  const values = [job.position, job.company, job.description, job.appliedat, job.state, job.stage, job.source, job.addinfo, job.closedat, job.closedreason, id];
+                `;
+  const values = [
+    job.position,
+    job.company,
+    job.description,
+    job.appliedat,
+    job.state,
+    job.stage,
+    job.source,
+    job.addinfo,
+    job.closedat,
+    job.closedreason,
+    id,
+  ];
   // console.log('updating with values', values);
   const res = await client.query(query, values);
   // console.log(res.rows[0]);
   return res.rows;
-}
+};

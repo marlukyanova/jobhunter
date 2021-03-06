@@ -10,7 +10,7 @@ describe('JobStageListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ JobStageListComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

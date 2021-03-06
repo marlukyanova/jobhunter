@@ -1,50 +1,54 @@
 <div class="jobapplist">
-
   <div class="buttons">
-    <a class="add" mat-raised-button color="accent" routerLink='jobapp/new'>Add JobApp</a>
+    <a class="add" mat-raised-button color="accent" routerLink="jobapp/new"
+      >Add JobApp</a
+    >
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Title Column -->
     <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Position </th>
-      <td mat-cell *matCellDef="let jobapp"> {{jobapp.position}} </td>
+      <th mat-header-cell *matHeaderCellDef>Position</th>
+      <td mat-cell *matCellDef="let jobapp">{{ jobapp.position }}</td>
     </ng-container>
-  
+
     <!-- Company Column -->
     <ng-container matColumnDef="company">
-      <th mat-header-cell *matHeaderCellDef> Company </th>
-      <td mat-cell *matCellDef="let jobapp"> {{jobapp.company}} </td>
+      <th mat-header-cell *matHeaderCellDef>Company</th>
+      <td mat-cell *matCellDef="let jobapp">{{ jobapp.company }}</td>
     </ng-container>
-  
+
     <!-- Applied Date Column -->
     <ng-container matColumnDef="appliedat">
-      <th mat-header-cell *matHeaderCellDef> Applied </th>
-      <td mat-cell *matCellDef="let jobapp"> {{jobapp.appliedat | date: 'MMM d, y'}} </td>
+      <th mat-header-cell *matHeaderCellDef>Applied</th>
+      <td mat-cell *matCellDef="let jobapp">
+        {{ jobapp.appliedat | date: "MMM d, y" }}
+      </td>
     </ng-container>
-  
+
     <!-- State Column -->
     <ng-container matColumnDef="state">
-      <th mat-header-cell *matHeaderCellDef> State </th>
-      <td mat-cell *matCellDef="let jobapp"> {{jobapp.state}} </td>
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let jobapp">{{ jobapp.state }}</td>
     </ng-container>
 
     <!-- Stage Column -->
     <ng-container matColumnDef="stage">
-      <th mat-header-cell *matHeaderCellDef> Stage </th>
-      <td mat-cell *matCellDef="let jobapp"> {{jobapp.stage}} </td>
+      <th mat-header-cell *matHeaderCellDef>Stage</th>
+      <td mat-cell *matCellDef="let jobapp">{{ jobapp.stage }}</td>
     </ng-container>
 
     <!-- Stage Column -->
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let jobapp"><a mat-raised-button color="primary" routerLink='jobapp/{{jobapp.id}}'>Details</a></td>
+      <td mat-cell *matCellDef="let jobapp">
+        <a mat-raised-button color="primary" routerLink="jobapp/{{ jobapp.id }}"
+          >Details</a
+        >
+      </td>
     </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  
 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>

@@ -1,6 +1,6 @@
-const jobstage = require('../models/jobstage');
+const jobstage = require("../models/jobstage");
 
-exports.getAllStages = async ctx => {
+exports.getAllStages = async (ctx) => {
   try {
     // console.log('request to get all stages for job');
     const jobappid = ctx.request.params.id;
@@ -12,7 +12,7 @@ exports.getAllStages = async ctx => {
   }
 };
 
-exports.getStage = async ctx => {
+exports.getStage = async (ctx) => {
   try {
     // console.log('request to get one stage');
     const stageid = ctx.request.params.stageid;
@@ -23,7 +23,7 @@ exports.getStage = async ctx => {
   }
 };
 
-exports.createStage = async ctx => {
+exports.createStage = async (ctx) => {
   try {
     const jobappid = ctx.request.params.id;
     const stage = ctx.request.body;
@@ -36,7 +36,7 @@ exports.createStage = async ctx => {
   }
 };
 
-exports.editStage = async ctx => {
+exports.editStage = async (ctx) => {
   try {
     // console.log('request to edit stage');
     const stage = ctx.request.body;
