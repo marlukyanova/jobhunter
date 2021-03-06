@@ -4,10 +4,10 @@
   margin-top: 20px;
 }
 
-button {
+/* button {
   position: absolute;
   right: 10px;
-}
+} */
 
 mat-card-content {
   margin-top: 50px;
@@ -16,4 +16,17 @@ mat-card-content {
 .column {
   display: flex;
   flex-direction: column;
+}
+
+button {
+  margin: 5px;
+}
+
+.buttons {
+  position: absolute;
+  right: 10px;
+}
+
+.row {
+  display: flex;
 }

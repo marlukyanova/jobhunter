@@ -2,7 +2,10 @@
 
   <mat-card>
     <mat-card-header>
-      <button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button>
+      <div class="buttons row">
+        <button mat-raised-button color="primary" (click)="saveChanges()">Save Changes</button>
+        <button mat-raised-button color="primary" (click)="returnToJobApp()">Back</button>
+      </div>
     </mat-card-header>
 
     <mat-card-content class="jobstageinfo">
