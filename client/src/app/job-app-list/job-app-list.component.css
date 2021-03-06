@@ -2,6 +2,7 @@
   width: 80%;
   margin: auto;
   margin-top: 20px;
+  
 }
 
 table {
@@ -10,4 +11,9 @@ table {
 
 .buttons {
   margin-bottom: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }
