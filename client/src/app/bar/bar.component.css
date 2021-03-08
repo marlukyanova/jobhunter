@@ -1,0 +1,9 @@
+.barchart {
+  width: 600px;
+  height: auto;
+  margin: auto;
+}
+
+.bar:hover {
+  fill: #fbd74a;
+}

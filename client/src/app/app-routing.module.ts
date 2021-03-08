@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { JobAppListComponent } from './job-app-list/job-app-list.component';
 import { JobAppItemComponent } from './job-app-item/job-app-item.component';
 import { JobStageItemComponent } from './job-stage-item/job-stage-item.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: JobAppListComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'jobapp/new', component: JobAppItemComponent },
   { path: 'jobapp/:id/stage/:stageid', component: JobStageItemComponent },
   { path: 'jobapp/:id/stage/new', component: JobStageItemComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({

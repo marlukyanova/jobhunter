@@ -21,6 +21,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { BarComponent } from './bar/bar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {MatSortModule} from '@angular/material/sort';
     JobAppListComponent,
     JobStageItemComponent,
     JobStageListComponent,
+    BarComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

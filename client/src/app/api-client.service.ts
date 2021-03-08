@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { JobApp } from './jobapp';
 import { JobStage } from './jobstage';
+import { Data } from './data';
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +59,9 @@ export class ApiClientService {
       `${this.baseURL}/jobapp/${id}/stage/${stageid}`,
       jobStage
     );
+  }
+
+  getJobsByStages(): Observable<Data[]> {
+    return this.http.get<Data[]>(`${this.baseURL}/dashboard/byStages`);
   }
 }
