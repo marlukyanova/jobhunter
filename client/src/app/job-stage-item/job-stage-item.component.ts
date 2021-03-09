@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
+import { JobAppStateService } from '../job-app-state.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
-// import { JobStage } from '../jobstage';
 
 @Component({
   selector: 'app-job-stage-item',
@@ -23,11 +23,13 @@ export class JobStageItemComponent implements OnInit {
   stageid?: number;
   jobid?: number;
   isAddMode?: boolean;
+  isClosed?: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private apiClient: ApiClientService,
-    private router: Router
+    private router: Router,
+    private jobAppState: JobAppStateService,
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,8 @@ export class JobStageItemComponent implements OnInit {
     } else {
       this.stageid = urlParamStageId;
       this.isAddMode = false;
-      this.getJobStage();
+      this.isClosed = this.jobAppState.getJobAppState();
+      this.getJobStage();      
     }
   }
 
@@ -59,6 +62,7 @@ export class JobStageItemComponent implements OnInit {
         date: new FormControl(data.date ? data.date : ''),
         addinfo: new FormControl(data.addinfo ? data.addinfo : ''),
       });
+      if (this.isClosed) this.jobStageForm.disable();
     });
   }
 
@@ -85,7 +89,6 @@ export class JobStageItemComponent implements OnInit {
   }
 
   updateJobStage(): void {
-    // console.log('updating...');
     if (
       this.jobStageForm !== undefined &&
       this.jobid !== undefined &&

@@ -2,18 +2,18 @@
   <form [formGroup]="jobAppForm">
     <mat-card>
       <mat-card-header class="top">
-        <div class="title">
+        <div class="title" *ngIf="!isAddMode">
           <mat-card-title>{{ jobAppForm.value.position }}</mat-card-title>
           <mat-card-subtitle>{{ jobAppForm.value.company }}</mat-card-subtitle>
         </div>
         <div class="buttons row">
           <div *ngIf="!isAddMode">
-            <button mat-raised-button color="primary" (click)="createStage()">
+            <button mat-raised-button color="primary" (click)="createStage()" [disabled]="isClosed">
               New Stage
             </button>
           </div>
           <div>
-            <button mat-raised-button color="primary" (click)="saveChanges()">
+            <button mat-raised-button color="primary" (click)="saveChanges()" [disabled]="isClosed">
               Save Changes
             </button>
           </div>
@@ -130,7 +130,7 @@
         </div>
       </mat-card-content>
 
-      <div *ngIf="jobid && !isAddMode">
+      <div *ngIf="jobid && !isAddMode && appstages.length > 0">
         <app-job-stage-list
           [appstages]="appstages"
           [jobid]="jobid"

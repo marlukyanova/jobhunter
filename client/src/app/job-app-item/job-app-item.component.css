@@ -2,6 +2,15 @@
   width: 68%;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+mat-card { 
+  margin-bottom: 20px;
 }
 
 .top {
@@ -26,7 +35,7 @@ button {
 }
 
 .jobappinfo {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .row {
