@@ -18,5 +18,7 @@ router.put('/jobapp/:id/stage/:stageid', jobstage.editStage);
 
 router.get('/dashboard/byStages', dashboard.getJobAppsbyStage);
 router.get('/dashboard/byStates', dashboard.getJobAppsByState);
+router.get('/dashboard/times', dashboard.getTimeStats);
+router.get('/dashboard/stages', dashboard.getStagesStats);
 
 module.exports = router;

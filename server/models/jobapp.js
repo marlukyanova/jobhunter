@@ -1,8 +1,8 @@
-const client = require("./index");
+const client = require('./index');
 
 exports.getAll = async () => {
   // console.log('getting all jobapps from db');
-  const queryRes = await client.query("select * from jobapp");
+  const queryRes = await client.query('select * from jobapp');
   const res = queryRes.rows.map((row) => {
     return {
       id: row.id,
@@ -20,7 +20,7 @@ exports.getAll = async () => {
 
 exports.getJobApp = async (id) => {
   // console.log('running db query');
-  const queryRes = await client.query("select * from jobapp where id=$1", [id]);
+  const queryRes = await client.query('select * from jobapp where id=$1', [id]);
   // console.log(res.rows[0]);
   const res = {
     id: queryRes.rows[0].id,
@@ -40,8 +40,8 @@ exports.getJobApp = async (id) => {
 };
 
 exports.createJobApp = async (job) => {
-  const query = `INSERT INTO jobapp(createdat, position, company, appliedat, description, addinfo) 
-                 VALUES ($1, $2, $3, $4, $5, $6)
+  const query = `INSERT INTO jobapp(createdat, position, company, appliedat, description, addinfo, state, stage) 
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                  RETURNING *;`;
   const values = [
     new Date(Date.now()).toISOString(),
@@ -50,6 +50,8 @@ exports.createJobApp = async (job) => {
     new Date(job.appliedat).toISOString(),
     job.description,
     job.addinfo,
+    job.state,
+    job.stage,
   ];
   // console.log('creating new job in db with values', values);
   const res = await client.query(query, values);

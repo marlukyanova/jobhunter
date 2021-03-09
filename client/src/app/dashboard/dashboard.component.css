@@ -7,3 +7,44 @@
 .chart {
   margin-right: 15px;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card {
+  width: 600px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+.dashboard {
+  margin: auto;
+  margin-left: 6em;
+  /* width: 80%; */
+}
+
+.title{
+  margin-right: 20px;
+  color:#673ab7;
+}
+
+.number {
+
+}
+
+mat-card-content {
+  margin-top: 20px;
+}

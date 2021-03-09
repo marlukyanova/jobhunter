@@ -79,7 +79,7 @@ export class BarComponent implements OnChanges {
       .attr('y', (d: Data) => y(d.number))
       .attr('width', x.bandwidth())
       .attr('height', (d: Data) => this.height - y(d.number))
-      .attr('fill', '#673ab7');
+      .attr('fill', '#f4746c');
 
     //Add values to bars
     this.svg.selectAll('text.bar')

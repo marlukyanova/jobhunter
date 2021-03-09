@@ -1,11 +1,53 @@
-<div class="row">
-  <div class="chart">
-    <app-bar [data]="stageAnalysisData" title="Stage Analysis" chartid="barchart1" key="chart1" #chart></app-bar>
-  </div>
-  <div>
-    <app-bar [data]="stateAnalysisData" title="State Analysis" chartid="barchart2" key="chart2"></app-bar>
-  </div>
-  
+<div class="dashboard">
 
+  <div class="column">
+
+    <div class = "row">
+
+      <div class="card">
+        <mat-card>
+          <mat-card-title>Days to close application</mat-card-title>
+          <mat-card-content>
+            <ul *ngFor="let timeStat of timesAnalysisData">
+              <li class="column">
+                <div class="row">
+                  <h2 class="title">{{timeStat.description}}:</h2>
+                  <h2 class="number">{{timeStat.number}}</h2>
+                </div>
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="card">
+        <mat-card>
+          <mat-card-title>Stages per Job Application</mat-card-title>
+          <mat-card-content>
+            <ul *ngFor="let stageStats of stagesStatsData">
+              <li class="column">
+                <div class="row">
+                  <h2 class="title">{{stageStats.description}}:</h2>
+                  <h2 class="number">{{stageStats.number}}</h2>
+                </div>
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="chart">
+        <app-bar [data]="stageAnalysisData" title="Stage Analysis" chartid="barchart1" key="chart1" #chart></app-bar>
+      </div>
+      <div>
+        <app-bar [data]="stateAnalysisData" title="State Analysis" chartid="barchart2" key="chart2"></app-bar>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
 

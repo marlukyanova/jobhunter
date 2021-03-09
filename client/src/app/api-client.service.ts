@@ -68,4 +68,12 @@ export class ApiClientService {
   getJobsByState(): Observable<Data[]> {
     return this.http.get<Data[]>(`${this.baseURL}/dashboard/byStates`);
   }
+
+  getTimeStats(): Observable<Data[]> {
+    return this.http.get<Data[]>(`${this.baseURL}/dashboard/times`);
+  }
+
+  getStagesStats(): Observable<Data[]> {
+    return this.http.get<Data[]>(`${this.baseURL}/dashboard/stages`);
+  }
 }

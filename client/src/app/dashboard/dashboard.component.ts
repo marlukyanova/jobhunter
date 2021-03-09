@@ -12,29 +12,43 @@ export class DashboardComponent implements OnInit {
   // barChartData: Array<{title: string, data: Data[]}> = [];
   stageAnalysisData: Data[] = [];
   stateAnalysisData: Data[] = [];
+  timesAnalysisData: Data[] = [];
+  stagesStatsData: Data[] = [];
 
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit(): void {
     this.getStageAnalysisData();
     this.getStateAnalysisData();
+    this.getTimeStats();
+    this.getStagesStats();
   }
 
   getStageAnalysisData(): void {
     this.apiClient.getJobsByStages().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.stageAnalysisData = data;}
-      // const stageAnalysisData = {title: 'Stage Analysis', data: data};
-      // this.barChartData.push(stageAnalysisData);}
     );
   }
 
   getStateAnalysisData(): void {
     this.apiClient.getJobsByState().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.stateAnalysisData = data;
-      // const stateAnalysisData = {title: 'State Analysis', data: data};
-      // this.barChartData.push(stateAnalysisData);
+    });
+  }
+
+  getTimeStats(): void {
+    this.apiClient.getTimeStats().subscribe(data => {
+      // console.log(data);
+      this.timesAnalysisData = data;
+    });
+  }
+
+  getStagesStats(): void {
+    this.apiClient.getStagesStats().subscribe(data => {
+      // console.log(data);
+      this.stagesStatsData = data;
     });
   }
 
