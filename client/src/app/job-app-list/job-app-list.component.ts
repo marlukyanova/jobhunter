@@ -35,7 +35,7 @@ export class JobAppListComponent implements OnInit {
 
   getJobApps(): void {
     this.apiClient.getAllJobApps().subscribe((data) => {
-      this.jobapps = data;
+      this.jobapps = data.sort((a, b) => b.id - a.id);
       this.dataSource = new MatTableDataSource(this.jobapps);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
