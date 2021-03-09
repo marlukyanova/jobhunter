@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges} from '@angular/core';
 
 import { Data } from '../data';
 
@@ -10,7 +10,10 @@ import * as d3 from 'd3';
   styleUrls: ['./bar.component.css']
 })
 export class BarComponent implements OnChanges {
+
   @Input() data!: Data[];
+  @Input() title!: string;
+  @Input() chartid!: string;
 
   svg: any;
   margin = 50;
@@ -19,14 +22,17 @@ export class BarComponent implements OnChanges {
 
   constructor() {}
 
+
   ngOnChanges(): void {
     this.createSvg();
     this.drawBars(this.data);
   }
 
+
   createSvg(): void {
-    d3.select('svg').remove();
-    this.svg = d3.select('figure#bar')
+    // d3.select('svg').remove();
+
+    this.svg = d3.select(`#${this.chartid}`)
       .append('svg')
       .attr('width', this.width + (this.margin * 2))
       .attr('height', this.height + (this.margin * 2))
@@ -38,7 +44,7 @@ export class BarComponent implements OnChanges {
     // Create the X-axis band scale
     const x = d3.scaleBand()
       .range([0, this.width])
-      .domain(data.map(d => d.stage))
+      .domain(data.map(d => d.description))
       .padding(0.2);
 
     // Draw the X-axis on the DOM
@@ -61,8 +67,6 @@ export class BarComponent implements OnChanges {
       .attr('font-size', '12px')
       .append('text')
       .attr('transform', 'rotate(-90)')
-      .attr('dx', '0.35em')
-      .attr('dy', -4)
       .style('text-anchor', 'middle');
 
     // Create and fill the bars
@@ -71,7 +75,7 @@ export class BarComponent implements OnChanges {
       .enter()
       .append('rect')
       .attr('class', 'bar')
-      .attr('x', (d: Data) => x(d.stage))
+      .attr('x', (d: Data) => x(d.description))
       .attr('y', (d: Data) => y(d.number))
       .attr('width', x.bandwidth())
       .attr('height', (d: Data) => this.height - y(d.number))
@@ -82,9 +86,9 @@ export class BarComponent implements OnChanges {
       .data(this.data)
       .enter().append('text')
       .attr('class', 'bar')
-      .attr('text-anchor', 'middle')
-      .attr('x', (d: Data) => x(d.stage))
-      .attr('y', (d: Data) =>  y(d.number))
+      .attr('text-anchor', 'start')
+      .attr('x', (d: Data) => x(d.description))
+      .attr('y', (d: Data) =>  y(d.number) - 5)
       .text((d: Data) => +d.number);
   }
 

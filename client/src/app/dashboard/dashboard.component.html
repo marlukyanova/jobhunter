@@ -1,1 +1,11 @@
-<app-bar [data]="barChartData"></app-bar>
+<div class="row">
+  <div class="chart">
+    <app-bar [data]="stageAnalysisData" title="Stage Analysis" chartid="barchart1" key="chart1" #chart></app-bar>
+  </div>
+  <div>
+    <app-bar [data]="stateAnalysisData" title="State Analysis" chartid="barchart2" key="chart2"></app-bar>
+  </div>
+  
+
+</div>
+

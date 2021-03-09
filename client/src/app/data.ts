@@ -1,4 +1,4 @@
 export class Data {
-  'stage': string;
+  'description': string;
   'number': number
 }

@@ -11,3 +11,28 @@ span {
   font-size: 25px;
   font-weight: 580;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  display: inline;
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #673ab7;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.rightside {
+  position: absolute;
+  right: 10px;
+}

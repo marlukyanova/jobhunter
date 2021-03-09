@@ -1,0 +1,9 @@
+.row {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.chart {
+  margin-right: 15px;
+}
