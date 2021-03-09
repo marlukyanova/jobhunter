@@ -13,7 +13,16 @@ table {
   margin-bottom: 10px;
 }
 
-.mat-form-field {
+mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.add {
+  margin-left: 10px;
+  height: 40px;
 }

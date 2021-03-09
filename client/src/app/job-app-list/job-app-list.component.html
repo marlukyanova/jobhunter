@@ -1,15 +1,19 @@
 <div class="jobapplist">
 
   <div class="row">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
     <a class="add" mat-raised-button color="accent" routerLink="jobapp/new"
       >Add JobApp</a
     >
   </div>
   
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input>
-  </mat-form-field>
+  </mat-form-field> -->
 
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -59,6 +63,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator #paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
 
 </div>
