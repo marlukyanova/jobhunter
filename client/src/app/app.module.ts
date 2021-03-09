@@ -23,6 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { BarComponent } from './bar/bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     JobStageListComponent,
     BarComponent,
     DashboardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

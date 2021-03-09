@@ -1,0 +1,11 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form {
+  width: 30%;
+  margin: auto;
+}

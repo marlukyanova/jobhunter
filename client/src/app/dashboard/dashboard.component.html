@@ -6,7 +6,7 @@
 
       <div class="card">
         <mat-card>
-          <mat-card-title>Days to close application</mat-card-title>
+          <mat-card-header><mat-card-title>Days to close application</mat-card-title></mat-card-header>
           <mat-card-content>
             <ul *ngFor="let timeStat of timesAnalysisData">
               <li class="column">
@@ -22,7 +22,7 @@
 
       <div class="card">
         <mat-card>
-          <mat-card-title>Stages per Job Application</mat-card-title>
+          <mat-card-header><mat-card-title>Stages per Job Application</mat-card-title></mat-card-header>
           <mat-card-content>
             <ul *ngFor="let stageStats of stagesStatsData">
               <li class="column">
@@ -39,10 +39,10 @@
 
     <div class="row">
       <div class="chart">
-        <app-bar [data]="stageAnalysisData" title="Stage Analysis" chartid="barchart1" key="chart1" #chart></app-bar>
+        <app-bar [data]="stateAnalysisData" title="State Analysis" chartid="barchart1" key="chart1" #chart></app-bar>
       </div>
       <div>
-        <app-bar [data]="stateAnalysisData" title="State Analysis" chartid="barchart2" key="chart2"></app-bar>
+        <app-bar [data]="stageAnalysisData" title="Stage Analysis" chartid="barchart2" key="chart2"></app-bar>
       </div>
     </div>
   </div>
