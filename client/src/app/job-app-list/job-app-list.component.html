@@ -5,7 +5,7 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
-    <a class="add" mat-raised-button color="accent" routerLink="jobapp/new"
+    <a class="add" mat-raised-button color="accent" href="jobapp/new"
       >Add JobApp</a
     >
   </div>
@@ -53,7 +53,7 @@
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let jobapp">
-        <a mat-raised-button color="primary" routerLink="jobapp/{{ jobapp.id }}"
+        <a mat-raised-button color="primary" href="jobapp/{{ jobapp.id }}"
           >Details</a
         >
       </td>
