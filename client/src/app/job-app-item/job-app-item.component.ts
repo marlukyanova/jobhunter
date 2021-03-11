@@ -108,7 +108,7 @@ export class JobAppItemComponent implements OnInit {
   createJobApp(): void {
     if (this.jobAppForm !== undefined)
       this.apiClient.createJobApp(this.jobAppForm.value).subscribe((data) => {
-        this.redirectTo(['jobapp', ''+data.id]);
+        this.redirectTo(['jobapp']);
       });
   }
 

@@ -8,10 +8,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  // { path: '', component: JobAppListComponent },
-  { path: '', component: LoginComponent},
+  { path: '', component: JobAppListComponent },
+  // { path: '', component: LoginComponent},
   // { path: 'login', component: LoginComponent},
-  { path: 'jobapp', component: JobAppListComponent},
+  // { path: 'jobapp', component: JobAppListComponent},
   { path: 'jobapp/:id', component: JobAppItemComponent },
   { path: 'jobapp/new', component: JobAppItemComponent },
   { path: 'jobapp/:id/stage/:stageid', component: JobStageItemComponent },
