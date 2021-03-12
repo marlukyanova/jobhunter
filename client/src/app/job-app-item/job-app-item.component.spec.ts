@@ -1,5 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterModule } from '@angular/router';
 import { JobAppItemComponent } from './job-app-item.component';
 
 describe('JobAppItemComponent', () => {
@@ -8,9 +9,9 @@ describe('JobAppItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JobAppItemComponent ]
-    })
-      .compileComponents();
+      declarations: [JobAppItemComponent],
+      imports: [RouterModule.forRoot([]), HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

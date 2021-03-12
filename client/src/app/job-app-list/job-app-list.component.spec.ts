@@ -1,5 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { JobAppListComponent } from './job-app-list.component';
 
 describe('JobAppListComponent', () => {
@@ -8,9 +8,9 @@ describe('JobAppListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JobAppListComponent ]
-    })
-      .compileComponents();
+      declarations: [JobAppListComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
