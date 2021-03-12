@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import { db } from './models';
-import { Sequelize } from 'sequelize/types';
 const router = require('./router');
 
 const PORT = 3001;
