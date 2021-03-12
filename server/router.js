@@ -1,10 +1,8 @@
-const Router = require('koa-router');
+const router = require('express').Router();
 
 const jobapp = require('./controllers/jobapp');
 const jobstage = require('./controllers/jobstage');
 const dashboard = require('./controllers/dashboard');
-
-const router = new Router();
 
 router.get('/jobapp', jobapp.getAllJobs);
 router.get('/jobapp/:id', jobapp.getJobApp);

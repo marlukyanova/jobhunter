@@ -1,50 +1,73 @@
-const jobapp = require('../models/jobapp');
+'use strict';
 
-exports.getAllJobs = async (ctx) => {
-  try {
-    // console.log('received get request');
-    ctx.body = await jobapp.getAll();
-    ctx.status = 200;
-  } catch (err) {
-    ctx.status = 500;
-  }
+const db = require('../models');
+const JobApp = db.jobapp;
+
+exports.getAllJobs = (req, res) => {
+  JobApp.findAll()
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `An error occurred while retrieving applications: ${err}`,
+      });
+    });
 };
 
-exports.getJobApp = async (ctx) => {
-  try {
-    // console.log('received get request for jobapp');
-    const id = ctx.request.params.id;
-    ctx.body = await jobapp.getJobApp(id);
-    ctx.status = 200;
-  } catch (err) {
-    ctx.status = 500;
-  }
+exports.getJobApp = (req, res) => {
+  JobApp.findByPk(req.params.id)
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `An error occurred while retrieving application: ${err}`,
+      });
+    });
 };
 
-exports.createJobApp = async (ctx) => {
-  try {
-    // console.log('new request to create a jobapp');
-    const job = ctx.request.body;
-    // console.log(job);
-    const newJob = await jobapp.createJobApp(job);
-    // console.log(newJob);
-    ctx.status = 201;
-    ctx.body = newJob;
-  } catch (err) {
-    ctx.status = 500;
-  }
+exports.createJobApp = async (req, res) => {
+  const app = {
+    position: req.body.position,
+    company: req.body.company,
+    description: req.body.description,
+    state: req.body.state,
+    stage: req.body.stage,
+    source: req.body.source,
+    addinfo: req.body.addinfo,
+    closedreason: req.body.closedreason,
+    createdate: req.body.createdate,
+    applieddate: req.body.applieddate,
+    closedate: req.body.closedate,
+  };
+  const data = await JobApp.create(app)
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Error occurred creating new job application: ${err}`,
+      });
+    });
 };
 
-exports.editJobApp = async (ctx) => {
-  try {
-    // console.log('request to update a jobapp');
-    const job = ctx.request.body;
-    // console.log(job);
-    const id = ctx.request.params.id;
-    const updated = await jobapp.editJobApp(id, job);
-    ctx.status = 201;
-    ctx.body = updated;
-  } catch (err) {
-    ctx.status = 500;
-  }
+exports.editJobApp = (req, res) => {
+  JobApp.update(req.body, {
+    where: { id: req.params.id },
+    returning: true,
+    plain: true,
+  })
+    .then((data) => {
+      res.status(200);
+      res.send(data[1]);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `An error occurred while updating application: ${err}`,
+      });
+    });
 };
