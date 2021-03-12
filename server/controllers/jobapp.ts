@@ -3,8 +3,8 @@
 import { JobAppInterface } from "../interfaces/interfaces";
 import { Request, Response } from "express";
 
-const db = require('../models');
-const JobApp = db.jobapp;
+import { db } from '../models';
+const JobApp = db.JobApp;
 
 exports.getAllJobs = (req:Request, res:Response):void => {
   JobApp.findAll()
@@ -17,7 +17,7 @@ exports.getAllJobs = (req:Request, res:Response):void => {
         message: `An error occurred while retrieving applications: ${err}`,
       });
     });
-};
+}
 
 exports.getJobApp = (req:Request, res:Response):void => {
   JobApp.findByPk(req.params.id)
@@ -30,7 +30,7 @@ exports.getJobApp = (req:Request, res:Response):void => {
         message: `An error occurred while retrieving application: ${err}`,
       });
     });
-};
+}
 
 exports.createJobApp = async (req:Request, res:Response):Promise<void> => {
   const app: JobAppInterface = {
@@ -56,7 +56,7 @@ exports.createJobApp = async (req:Request, res:Response):Promise<void> => {
         message: `Error occurred creating new job application: ${err}`,
       });
     });
-};
+}
 
 exports.editJobApp = (req:Request, res:Response):void => {
   JobApp.update(req.body, {
@@ -73,4 +73,4 @@ exports.editJobApp = (req:Request, res:Response):void => {
         message: `An error occurred while updating application: ${err}`,
       });
     });
-};
+}
