@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const jobapp = require('./controllers/jobapp');
-const jobstage = require('./controllers/jobstage');
-const dashboard = require('./controllers/dashboard');
+const jobapp: any = require('./controllers/jobapp');
+const jobstage: any = require('./controllers/jobstage');
+const dashboard: any = require('./controllers/dashboard');
 
 router.get('/jobapp', jobapp.getAllJobs);
 router.get('/jobapp/:id', jobapp.getJobApp);
