@@ -39,9 +39,9 @@ exports.createJobApp = async (req, res) => {
     source: req.body.source,
     addinfo: req.body.addinfo,
     closedreason: req.body.closedreason,
-    createdate: req.body.createdate,
-    applieddate: req.body.applieddate,
-    closedate: req.body.closedate,
+    createdat: req.body.createdat,
+    appliedat: req.body.applieddat,
+    closedat: req.body.closedat,
   };
   const data = await JobApp.create(app)
     .then((data) => {
