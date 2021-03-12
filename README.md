@@ -19,7 +19,7 @@ CREATE TABLE jobapp (
   createdat text NOT NULL,
   appliedat text NOT NULL,
   closedat text,
-  PRIMARY KEY("id)
+  PRIMARY KEY("id")
 );
 CREATE TABLE jobstage (
   id serial PRIMARY_KEY,

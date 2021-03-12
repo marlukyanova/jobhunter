@@ -1,50 +1,67 @@
-const jobstage = require("../models/jobstage");
+'use strict';
 
-exports.getAllStages = async (ctx) => {
-  try {
-    // console.log('request to get all stages for job');
-    const jobappid = ctx.request.params.id;
-    // console.log(jobappid);
-    ctx.body = await jobstage.getAll(jobappid);
-    ctx.status = 200;
-  } catch (err) {
-    ctx.status = 500;
-  }
+const db = require('../models');
+const JobStage = db.jobstage;
+
+exports.getAllStages = (req, res) => {
+  JobStage.findAll()
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `An error occurred while retrieving stages: ${err}`,
+      });
+    });
 };
 
-exports.getStage = async (ctx) => {
-  try {
-    // console.log('request to get one stage');
-    const stageid = ctx.request.params.stageid;
-    ctx.body = await jobstage.getStage(stageid);
-    ctx.status = 200;
-  } catch (err) {
-    ctx.status = 500;
-  }
+exports.getStage = (req, res) => {
+  JobApp.findByPk(req.params.id)
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `An error occurred while retrieving stage: ${err}`,
+      });
+    });
 };
 
-exports.createStage = async (ctx) => {
-  try {
-    const jobappid = ctx.request.params.id;
-    const stage = ctx.request.body;
-    // console.log('request to create new jobstage for job', jobappid, 'with data', stage);
-    const newstage = await jobstage.createStage(jobappid, stage);
-    ctx.body = newstage;
-    ctx.status = 201;
-  } catch (err) {
-    ctx.status = 500;
-  }
+exports.createStage = async (req, res) => {
+  const stage = {
+    createdate: req.body.createdate,
+    type: req.body.type,
+    date: req.body.date,
+    addinfo: req.body.addinfo,
+    jobappId: req.params.id,
+  };
+  const data = await JobStage.create(stage)
+    .then((data) => {
+      res.status(200);
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Error occurred creating new job stage: ${err}`,
+      });
+    });
 };
 
-exports.editStage = async (ctx) => {
-  try {
-    // console.log('request to edit stage');
-    const stage = ctx.request.body;
-    const stageid = ctx.request.params.stageid;
-    const updated = await jobstage.editStage(stageid, stage);
-    ctx.status = 201;
-    ctx.body = updated;
-  } catch (err) {
-    ctx.status = 500;
-  }
+exports.editStage = (req, res) => {
+  JobStage.update(req.body, {
+    where: { id: req.params.id },
+    returning: true,
+    plain: true,
+  })
+    .then((data) => {
+      res.status(200);
+      res.send(data[1]);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `An error occurred while updating stage: ${err}`,
+      });
+    });
 };
