@@ -1,6 +1,6 @@
 'use strict';
 
-import { JobStageInterface } from "../interfaces/interfaces";
+import { JobStageAttributes } from "../models/jobstage";
 import { Request, Response } from "express";
 
 import { db } from '../models';
@@ -33,11 +33,11 @@ exports.getStage = (req:Request, res:Response):void => {
 }
 
 exports.createStage = async (req:Request, res:Response):Promise<void> => {
-  const stage:JobStageInterface = {
+  const stage: JobStageAttributes = {
+    id: '',
     type: req.body.type,
     date: req.body.date,
     addinfo: req.body.addinfo,
-    jobappId: req.params.id,
   };
   
   const data = await JobStage.create(stage)
@@ -56,7 +56,6 @@ exports.editStage = (req:Request, res:Response):void => {
   JobStage.update(req.body, {
     where: { id: req.params.id },
     returning: true,
-    plain: true,
   })
     .then((data: any) => {
       res.status(200);

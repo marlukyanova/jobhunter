@@ -1,6 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
 export interface JobStageAttributes {
+  id: string;
   type: string;
   date: string;
   addinfo: string;

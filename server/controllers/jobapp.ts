@@ -1,6 +1,6 @@
 'use strict';
 
-import { JobAppInterface } from "../interfaces/interfaces";
+import { JobAppAttributes } from "../models/jobapp";
 import { Request, Response } from "express";
 
 import { db } from '../models';
@@ -33,7 +33,8 @@ exports.getJobApp = (req:Request, res:Response):void => {
 }
 
 exports.createJobApp = async (req:Request, res:Response):Promise<void> => {
-  const app: JobAppInterface = {
+  const app: JobAppAttributes = {
+    id: '',
     position: req.body.position,
     company: req.body.company,
     description: req.body.description,
@@ -62,7 +63,6 @@ exports.editJobApp = (req:Request, res:Response):void => {
   JobApp.update(req.body, {
     where: { id: req.params.id },
     returning: true,
-    plain: true,
   })
     .then((data) => {
       res.status(200);

@@ -1,6 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
 export interface JobAppAttributes {
+  id: string;
   position: string;
   company: string;
   description: string;
