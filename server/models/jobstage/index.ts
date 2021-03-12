@@ -1,7 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
 export interface JobStageAttributes {
-  createdat: string;
   type: string;
   date: string;
   addinfo: string;
@@ -21,10 +20,6 @@ export function JobStageFactory(sequelize: Sequelize) {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-    },
-    createdat: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     type: {
       type: DataTypes.STRING,

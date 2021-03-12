@@ -1,9 +1,9 @@
 'use strict';
 
-const db = require('../models');
-const JobStage = db.jobstage;
+import { db } from '../models';
+const JobStage = db.JobStage;
 
-exports.getAllStages = (req, res) => {
+export function getAllStages(req, res) {
   JobStage.findAll()
     .then((data) => {
       res.status(200);
@@ -14,10 +14,10 @@ exports.getAllStages = (req, res) => {
         message: `An error occurred while retrieving stages: ${err}`,
       });
     });
-};
+}
 
-exports.getStage = (req, res) => {
-  JobApp.findByPk(req.params.id)
+export function getStage(req, res) {
+  JobStage.findByPk(req.params.id)
     .then((data) => {
       res.status(200);
       res.send(data);
@@ -27,11 +27,11 @@ exports.getStage = (req, res) => {
         message: `An error occurred while retrieving stage: ${err}`,
       });
     });
-};
+}
 
-exports.createStage = async (req, res) => {
+export async function createStage(req, res) {
   const stage = {
-    createdate: req.body.createdate,
+    createdat: req.body.createdat,
     type: req.body.type,
     date: req.body.date,
     addinfo: req.body.addinfo,
@@ -47,9 +47,9 @@ exports.createStage = async (req, res) => {
         message: `Error occurred creating new job stage: ${err}`,
       });
     });
-};
+}
 
-exports.editStage = (req, res) => {
+export function editStage(req, res) {
   JobStage.update(req.body, {
     where: { id: req.params.id },
     returning: true,
@@ -64,4 +64,4 @@ exports.editStage = (req, res) => {
         message: `An error occurred while updating stage: ${err}`,
       });
     });
-};
+}

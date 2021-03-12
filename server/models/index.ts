@@ -4,8 +4,8 @@ import { JobStageFactory, JobStageStatic } from './jobstage';
 
 export interface DB {
   sequelize: Sequelize;
-  JobApp: JobAppStatic,
-  JobStage: JobStageStatic,
+  JobApp: JobAppStatic;
+  JobStage: JobStageStatic;
 }
 
 const sequelize = new Sequelize('JobHunter', 'shaunmartin', '', {

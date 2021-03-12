@@ -1,9 +1,9 @@
 'use strict';
 
-const db = require('../models');
-const JobApp = db.jobapp;
+import { db } from '../models';
+const JobApp = db.JobApp;
 
-exports.getAllJobs = (req, res) => {
+export function getAllJobs(req, res) {
   JobApp.findAll()
     .then((data) => {
       res.status(200);
@@ -14,9 +14,9 @@ exports.getAllJobs = (req, res) => {
         message: `An error occurred while retrieving applications: ${err}`,
       });
     });
-};
+}
 
-exports.getJobApp = (req, res) => {
+export function getJobApp(req, res) {
   JobApp.findByPk(req.params.id)
     .then((data) => {
       res.status(200);
@@ -27,9 +27,9 @@ exports.getJobApp = (req, res) => {
         message: `An error occurred while retrieving application: ${err}`,
       });
     });
-};
+}
 
-exports.createJobApp = async (req, res) => {
+export async function createJobApp(req, res) {
   const app = {
     position: req.body.position,
     company: req.body.company,
@@ -53,9 +53,9 @@ exports.createJobApp = async (req, res) => {
         message: `Error occurred creating new job application: ${err}`,
       });
     });
-};
+}
 
-exports.editJobApp = (req, res) => {
+export function editJobApp(req, res) {
   JobApp.update(req.body, {
     where: { id: req.params.id },
     returning: true,
@@ -70,4 +70,4 @@ exports.editJobApp = (req, res) => {
         message: `An error occurred while updating application: ${err}`,
       });
     });
-};
+}

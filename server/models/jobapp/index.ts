@@ -9,7 +9,6 @@ export interface JobAppAttributes {
   source: string;
   addinfo: string;
   closedreason: string;
-  createdat: string;
   appliedat: string;
   closedat: string;
 }
@@ -60,10 +59,6 @@ export function JobAppFactory(sequelize: Sequelize) {
     closedreason: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    createdat: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     appliedat: {
       type: DataTypes.STRING,
