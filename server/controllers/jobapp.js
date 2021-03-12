@@ -40,7 +40,7 @@ exports.createJobApp = async (req, res) => {
     addinfo: req.body.addinfo,
     closedreason: req.body.closedreason,
     createdat: req.body.createdat,
-    appliedat: req.body.applieddat,
+    appliedat: req.body.appliedat,
     closedat: req.body.closedat,
   };
   const data = await JobApp.create(app)
