@@ -36,15 +36,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    createdate: {
+    createdat: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    applieddate: {
+    appliedat: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    closedate: {
+    closedat: {
       type: DataTypes.STRING,
       allowNull: true,
     },
