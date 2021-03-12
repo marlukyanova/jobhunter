@@ -1,9 +1,12 @@
 'use strict';
 
+import { JobAppInterface } from "../interfaces/interfaces";
+import { Request, Response } from "express";
+
 import { db } from '../models';
 const JobApp = db.JobApp;
 
-export function getAllJobs(req, res) {
+exports.getAllJobs = (req:Request, res:Response):void => {
   JobApp.findAll()
     .then((data) => {
       res.status(200);
@@ -16,7 +19,7 @@ export function getAllJobs(req, res) {
     });
 }
 
-export function getJobApp(req, res) {
+exports.getJobApp = (req:Request, res:Response):void => {
   JobApp.findByPk(req.params.id)
     .then((data) => {
       res.status(200);
@@ -29,8 +32,8 @@ export function getJobApp(req, res) {
     });
 }
 
-export async function createJobApp(req, res) {
-  const app = {
+exports.createJobApp = async (req:Request, res:Response):Promise<void> => {
+  const app: JobAppInterface = {
     position: req.body.position,
     company: req.body.company,
     description: req.body.description,
@@ -39,10 +42,10 @@ export async function createJobApp(req, res) {
     source: req.body.source,
     addinfo: req.body.addinfo,
     closedreason: req.body.closedreason,
-    createdat: req.body.createdat,
     appliedat: req.body.appliedat,
     closedat: req.body.closedat,
   };
+
   const data = await JobApp.create(app)
     .then((data) => {
       res.status(200);
@@ -55,7 +58,7 @@ export async function createJobApp(req, res) {
     });
 }
 
-export function editJobApp(req, res) {
+exports.editJobApp = (req:Request, res:Response):void => {
   JobApp.update(req.body, {
     where: { id: req.params.id },
     returning: true,

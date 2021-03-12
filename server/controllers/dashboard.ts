@@ -1,11 +1,13 @@
 'use strict';
 
+import { Request, Response } from "express";
+
 const db = require('../models');
 const JobApp = db.jobapp;
 const JobStage = db.jobstage;
 const { sequelize } = require('../models');
 
-exports.getJobAppsbyStage = async (req, res) => {
+exports.getJobAppsbyStage = async (req: Request, res: Response): Promise<void> => {
   try {
     const query = `
                 SELECT 'Application' AS stage, COUNT(*) AS number
@@ -24,7 +26,7 @@ exports.getJobAppsbyStage = async (req, res) => {
   }
 };
 
-exports.getJobAppsByState = async (req, res) => {
+exports.getJobAppsByState = async (req: Request, res: Response): Promise<void> => {
   try {
     const query = `
                 SELECT state, COUNT(*)
@@ -40,7 +42,7 @@ exports.getJobAppsByState = async (req, res) => {
   }
 };
 
-exports.getTimeStats = async (req, res) => {
+exports.getTimeStats = async (req: Request, res: Response): Promise<void> => {
   try {
     const query = `
                 SELECT ROUND(AVG(c.diff)) AS AVG, MAX(c.diff) AS MAX, MIN(c.diff) AS MIN
@@ -51,7 +53,8 @@ exports.getTimeStats = async (req, res) => {
                 ORDER BY diff) AS c;
                 `;
     const queryRes = await sequelize.query(query);
-    const result = [];
+    type ResultObject = {};
+    const result: ResultObject[] = [];
     result.push({ description: 'Minimum', number: queryRes[0].min || 0 });
     result.push({ description: 'Maximum', number: queryRes[0].max || 0 });
     result.push({ description: 'Average', number: queryRes[0].avg || 0 });
@@ -62,7 +65,7 @@ exports.getTimeStats = async (req, res) => {
   }
 };
 
-exports.getStagesStats = async (req, res) => {
+exports.getStagesStats = async (req: Request, res: Response): Promise<void> => {
   try {
     const query = `
                 SELECT ROUND(AVG(s.count)) AS AVG, MAX(s.count) AS MAX, MIN(s.count) AS MIN
@@ -72,7 +75,8 @@ exports.getStagesStats = async (req, res) => {
                 GROUP BY jobappid) AS s;
                 `;
     const queryRes = await sequelize.query(query);
-    const result = [];
+    type ResultObject = {};
+    const result: ResultObject[] = [];
     result.push({ description: 'Minimum', number: queryRes[0].min || 0 });
     result.push({ description: 'Maximum', number: queryRes[0].max || 0 });
     result.push({ description: 'Average', number: queryRes[0].avg || 0 });
