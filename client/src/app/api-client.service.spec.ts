@@ -1,21 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import {JobApp} from './jobapp';
-import mocks from './mocks/mocks';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ApiClientService } from './api-client.service';
 
 describe('ApiClientService', () => {
   let service: ApiClientService;
-  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [ApiClientService],
-      imports: [HttpClientTestingModule]
-    });
+    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
     service = TestBed.inject(ApiClientService);
-    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
