@@ -1,4 +1,4 @@
-const jobapp = require('../models/jobapp');
+const jobapp = require("../models/jobapp");
 
 exports.getAllJobs = async (ctx) => {
   try {
@@ -23,7 +23,7 @@ exports.getJobApp = async (ctx) => {
 
 exports.createJobApp = async (ctx) => {
   try {
-    // console.log('new request to create a jobapp');
+    // console.log("new request to create a jobapp");
     const job = ctx.request.body;
     // console.log(job);
     const newJob = await jobapp.createJobApp(job);
