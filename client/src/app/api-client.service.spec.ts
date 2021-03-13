@@ -1,20 +1,27 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ApiClientService } from './api-client.service';
 
 describe('ApiClientService', () => {
   let service: ApiClientService;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ApiClientService]
+    })
     service = TestBed.inject(ApiClientService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+  it('should be truthy', () => {
+    expect(service.getAllJobApps).toBeTruthy();
+  })
 
-  it('greeting should be hello'), () => {
-    expect(service.greet).toBe('hello');
-  }
+  it('should use correct URL and method', () => {
+    service.getAllJobApps().subscribe();
+    const req = httpMock.expectOne(`${service.baseURL}/jobapp`);
+    expect(req.request.method).toBe('GET');
+  })
 });

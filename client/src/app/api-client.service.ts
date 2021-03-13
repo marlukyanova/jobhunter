@@ -10,8 +10,7 @@ import { Data } from './data';
   providedIn: 'root',
 })
 export class ApiClientService {
-  private baseURL = 'http://localhost:3001';
-  greet: string = 'hello';
+  baseURL: string = 'http://localhost:3001';
 
   constructor(private http: HttpClient) {}
 
