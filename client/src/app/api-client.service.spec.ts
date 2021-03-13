@@ -1,9 +1,27 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { ApiClientService } from './api-client.service';
+import mocks from './mocks/mocks';
 
 describe('ApiClientService', () => {
   let service: ApiClientService;
+  let mockJobApp = {
+    id: 1,
+    position: 'Tea Boi',
+    company: 'Codeworks',
+    description: 'Know the orders',
+    stage: 'Passive',
+    source: '',
+    state: 'Applied',
+    addinfo: '',
+    closedreason: '',
+    createdat: 92837464812,
+    appliedat: 92837464812,
+    closedat: null,
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
@@ -14,7 +32,7 @@ describe('ApiClientService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('greeting should be hello'), () => {
-    expect(service.greet).toBe('hello');
-  }
+  it('should be called', () => {
+    expect(service.getAllJobApps()).toBeTruthy();
+  });
 });

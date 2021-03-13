@@ -11,7 +11,6 @@ import { Data } from './data';
 })
 export class ApiClientService {
   private baseURL = 'http://localhost:3001';
-  greet: string = 'hello';
 
   constructor(private http: HttpClient) {}
 
