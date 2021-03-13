@@ -19,7 +19,6 @@ export class ApiClientService {
   }
 
   getJobApp(id: number): Observable<JobApp> {
-    console.log('sending request...');
     return this.http.get<JobApp>(`${this.baseURL}/jobapp/${id}`);
   }
 
