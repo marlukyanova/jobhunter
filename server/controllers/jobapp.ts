@@ -34,7 +34,7 @@ exports.getJobApp = (req:Request, res:Response):void => {
 
 exports.createJobApp = async (req:Request, res:Response):Promise<void> => {
   const app: JobAppAttributes = {
-    id: '',
+    id:'',
     position: req.body.position,
     company: req.body.company,
     description: req.body.description,

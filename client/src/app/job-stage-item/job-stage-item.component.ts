@@ -53,8 +53,7 @@ export class JobStageItemComponent implements OnInit {
 
   getJobStage(): void {
     this.apiClient.getJobStage(this.jobid!, this.stageid!).subscribe((data) => {
-      console.log(data);
-      this.jobStageForm = new FormGroup({
+        this.jobStageForm = new FormGroup({
         stage: new FormControl(data.type ? data.type : ''),
         createdat: new FormControl(
           data.createdat ? data.createdat : new Date(Date.now())
@@ -99,7 +98,7 @@ export class JobStageItemComponent implements OnInit {
         .subscribe({
           next: () => {
             this.router.navigateByUrl(
-              `/jobapp/${this.jobid}/stage/${this.stageid}`
+              `/jobapp/${this.jobid}`
             );
           },
           error: (error) => {

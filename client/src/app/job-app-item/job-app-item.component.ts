@@ -22,7 +22,6 @@ export class JobAppItemComponent implements OnInit {
   ];
 
   jobAppForm?: FormGroup;
-
   appstages: JobStage[] = [];
   jobid?: number;
   isAddMode?: boolean;
