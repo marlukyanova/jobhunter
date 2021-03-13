@@ -8,7 +8,7 @@ export interface DB {
   JobStage: JobStageStatic;
 }
 
-const sequelize = new Sequelize('JobHunter', 'shaunmartin', '', {
+export const sequelize = new Sequelize('JobHunter', 'shaunmartin', '', {
   host: 'localhost',
   dialect: 'postgres',
   pool: {

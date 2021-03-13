@@ -1,25 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { JobAppListComponent } from './job-app-list.component';
+import { ApiClientService } from '../api-client.service';
 
 describe('JobAppListComponent', () => {
-  let component: JobAppListComponent;
-  let fixture: ComponentFixture<JobAppListComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ JobAppListComponent ]
-    })
-      .compileComponents();
-  });
+  let fixture: JobAppListComponent;
+  let apiClientMock: ApiClientService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JobAppListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = new JobAppListComponent(apiClientMock)
+  })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Set up component', () => {
+    describe('ngOnInit', () => {
+      it('should call getJobApps', () => {
+        const getJobAppsSpy = jest.spyOn(fixture, 'getJobApps');
+
+        fixture.ngOnInit();
+
+        expect(getJobAppsSpy).toHaveBeenCalled();
+      });
+    });
   });
 });

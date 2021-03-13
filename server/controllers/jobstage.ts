@@ -7,7 +7,7 @@ import { db } from '../models';
 const JobStage = db.JobStage;
 
 exports.getAllStages = (req:Request, res:Response):void => {
-  JobStage.findAll()
+  JobStage.findAll({where: {jobappId: req.params.id}})
     .then((data: any) => {
       res.status(200);
       res.send(data);
@@ -20,7 +20,7 @@ exports.getAllStages = (req:Request, res:Response):void => {
 }
 
 exports.getStage = (req:Request, res:Response):void => {
-  JobStage.findByPk(req.params.stageid)
+  JobStage.findOne({where: {id: req.params.stageid, jobappId: req.params.id}})
     .then((data: any) => {
       res.status(200);
       res.send(data);
