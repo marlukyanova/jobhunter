@@ -8,31 +8,30 @@ import mocks from './mocks/mocks';
 
 describe('ApiClientService', () => {
   let service: ApiClientService;
-  let mockJobApp = {
-    id: 1,
-    position: 'Tea Boi',
-    company: 'Codeworks',
-    description: 'Know the orders',
-    stage: 'Passive',
-    source: '',
-    state: 'Applied',
-    addinfo: '',
-    closedreason: '',
-    createdat: 92837464812,
-    appliedat: 92837464812,
-    closedat: null,
-  };
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ApiClientService],
+    });
     service = TestBed.inject(ApiClientService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should be truthy', () => {
+    expect(service.getAllJobApps).toBeTruthy();
   });
 
-  it('should be called', () => {
-    expect(service.getAllJobApps()).toBeTruthy();
+  it('should use correct URL and method', () => {
+    service.getAllJobApps().subscribe();
+    const req = httpMock.expectOne(`${service.baseURL}/jobapp`);
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('#createJobApp should use correct URL and method and be only called once', () => {
+    service.createJobApp(mocks).subscribe();
+    const req = httpMock.expectOne(`${service.baseURL}/jobapp`);
+    expect(req.request.method).toBe('POST');
   });
 });
