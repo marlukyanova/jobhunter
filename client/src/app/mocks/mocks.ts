@@ -1,4 +1,4 @@
-import {JobApp} from '../jobapp';
+import { JobApp } from '../jobapp';
 
 const jobApp: JobApp = {
   id: 1,
@@ -13,6 +13,6 @@ const jobApp: JobApp = {
   createdat: 92837464812,
   appliedat: 92837464812,
   closedat: null,
-}
+};
 
 export default jobApp;
