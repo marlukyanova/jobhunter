@@ -1,10 +1,11 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
 export interface JobStageAttributes {
-  id: string;
+  id: number;
   type: string;
   date: string;
   addinfo: string;
+  jobappId: number;
 }
 
 export interface JobStageModel
@@ -34,5 +35,9 @@ export function JobStageFactory(sequelize: Sequelize) {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    jobappId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   });
 }

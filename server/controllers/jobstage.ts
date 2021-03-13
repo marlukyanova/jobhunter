@@ -20,7 +20,7 @@ exports.getAllStages = (req:Request, res:Response):void => {
 }
 
 exports.getStage = (req:Request, res:Response):void => {
-  JobStage.findByPk(req.params.id)
+  JobStage.findByPk(req.params.stageid)
     .then((data: any) => {
       res.status(200);
       res.send(data);
@@ -34,10 +34,11 @@ exports.getStage = (req:Request, res:Response):void => {
 
 exports.createStage = async (req:Request, res:Response):Promise<void> => {
   const stage: JobStageAttributes = {
-    id: '',
-    type: req.body.type,
+    id: 0,
+    type: req.body.stage,
     date: req.body.date,
     addinfo: req.body.addinfo,
+    jobappId: parseInt(req.params.id),
   };
   
   const data = await JobStage.create(stage)
@@ -53,8 +54,16 @@ exports.createStage = async (req:Request, res:Response):Promise<void> => {
 }
 
 exports.editStage = (req:Request, res:Response):void => {
-  JobStage.update(req.body, {
-    where: { id: req.params.id },
+  const stage: JobStageAttributes = {
+    id: parseInt(req.params.stageid),
+    type: req.body.stage,
+    date: req.body.date,
+    addinfo: req.body.addinfo,
+    jobappId: parseInt(req.params.id),
+  };
+
+  JobStage.update(stage, {
+    where: { jobappId: req.params.id, id: req.params.stageid },
     returning: true,
   })
     .then((data: any) => {

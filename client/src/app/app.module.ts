@@ -12,15 +12,15 @@ import { JobStageListComponent } from './job-stage-list/job-stage-list.component
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule } from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { BarComponent } from './bar/bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -54,10 +54,7 @@ import { LoginComponent } from './login/login.component';
     MatPaginatorModule,
     MatSortModule,
   ],
-  providers: [
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
-  bootstrap: [AppComponent]
+  providers: [MatDatepickerModule, MatNativeDateModule],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
