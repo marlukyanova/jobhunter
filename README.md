@@ -7,21 +7,6 @@ BackEnd: Koa + Postgres
 Run Postgres Server and run following queris to create database and tables:
 CREATE DATABASE JobHunter;
 CREATE TABLE jobapp (
-<<<<<<< HEAD
-  id serial NOT NULL,
-  position VARCHAR(100) NOT NULL,
-  company VARCHAR(50) NOT NULL,
-  description text,
-  state VARCHAR(50) NOT NULL,
-  stage VARCHAR(50) NOT NULL,
-  source VARCHAR(50),
-  addinfo text,
-  closedreason text,
-  createdat text NOT NULL,
-  appliedat text NOT NULL,
-  closedat text,
-  PRIMARY KEY("id")
-=======
 id serial NOT NULL,
 position VARCHAR(100) NOT NULL,
 company VARCHAR(50) NOT NULL,
@@ -35,7 +20,6 @@ createdat text NOT NULL,
 appliedat text NOT NULL,
 closedat text,
 PRIMARY KEY("id")
->>>>>>> refs/remotes/origin/development
 );
 
 CREATE TABLE jobstage (
