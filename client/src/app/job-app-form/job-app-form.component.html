@@ -8,12 +8,12 @@
         </div>
         <div class="buttons row">
           <div *ngIf="!isAddMode">
-            <button mat-raised-button color="primary" (click)="createStage()" [disabled]="isClosed">
+            <button id="newStage" mat-raised-button color="primary" (click)="createStage()" [disabled]="isClosed">
               New Stage
             </button>
           </div>
           <div>
-            <button mat-raised-button color="primary" (click)="saveChanges()" [disabled]="isClosed">
+            <button id="saveChanges" mat-raised-button color="primary" (click)="saveChanges()" [disabled]="isClosed">
               Save Changes
             </button>
           </div>
