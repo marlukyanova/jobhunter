@@ -3,18 +3,21 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const db_password = process.env.DB_PASSWORD;
+const db_user = process.env.DB_USER;
+const db_name = process.env.DB_NAME;
+const db_port = process.env.DB_PORT;
 
 const client = new Client({
-  user: 'postgres',
+  user: `${db_user}`,
   host: 'localhost',
-  database: 'JobHunter',
+  database: `${db_name}`,
   password: `${db_password}`,
-  port: 5000,
+  port: db_port,
 });
 
 client
   .connect()
   .then(() => console.log("connected to DB"))
-  .catch((err) => console.error("connection error", err));
+  .catch((err) => console.error("connection error " + err));
 
 module.exports = client;
