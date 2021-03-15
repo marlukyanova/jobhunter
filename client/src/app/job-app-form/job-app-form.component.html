@@ -1,4 +1,5 @@
 <div *ngIf="jobAppForm" class="jobappform">
+  <h1>banana</h1>
   <form [formGroup]="jobAppForm">
     <mat-card>
       <mat-card-header class="top">
@@ -22,6 +23,7 @@
               mat-raised-button
               color="primary"
               type="button"
+              class="save-changes-button"
               (click)="saveChanges()"
               [disabled]="isClosed"
             >

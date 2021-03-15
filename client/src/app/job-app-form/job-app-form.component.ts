@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
 import { JobAppStateService } from '../job-app-state.service';
-import { FormGroup, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 
 import { JobStage } from '../jobstage';
 
@@ -20,6 +25,7 @@ export class JobAppFormComponent implements OnInit {
     'Interview',
     'Offer',
   ];
+  title: string = 'banana';
 
   jobAppForm?: FormGroup;
 
@@ -32,7 +38,7 @@ export class JobAppFormComponent implements OnInit {
     private route: ActivatedRoute,
     private apiClient: ApiClientService,
     private router: Router,
-    private jobAppState: JobAppStateService,
+    private jobAppState: JobAppStateService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +69,9 @@ export class JobAppFormComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       const id = +params.id;
       this.apiClient.getJobApp(id).subscribe((data) => {
-        data.state === 'Closed' ? this.isClosed = true : this.isClosed = false;
+        data.state === 'Closed'
+          ? (this.isClosed = true)
+          : (this.isClosed = false);
         this.jobAppForm = new FormGroup({
           position: new FormControl(data.position ? data.position : ''),
           company: new FormControl(data.company ? data.company : ''),
@@ -98,7 +106,7 @@ export class JobAppFormComponent implements OnInit {
   }
 
   saveChanges(): void {
-    console.log(this.jobAppForm)
+    console.log(this.jobAppForm);
     if (this.isAddMode) {
       this.createJobApp();
     } else {
@@ -107,17 +115,21 @@ export class JobAppFormComponent implements OnInit {
   }
 
   createJobApp(): void {
-    if (this.jobAppForm !== undefined)
+    if (this.jobAppForm !== undefined) {
+      console.log('boink', this.jobAppForm.value);
+
       this.apiClient.createJobApp(this.jobAppForm.value).subscribe((data) => {
+        console.log(data);
         this.redirectTo(['jobapp']);
       });
+    }
   }
 
   updateJobApp(): void {
     if (this.jobAppForm !== undefined && this.jobid !== undefined)
       this.apiClient.updateJobApp(this.jobAppForm.value, this.jobid).subscribe({
         next: () => {
-          this.redirectTo(['jobapp', ''+this.jobid!]);
+          this.redirectTo(['jobapp', '' + this.jobid!]);
         },
         error: (error) => {
           console.log(error);
@@ -130,9 +142,8 @@ export class JobAppFormComponent implements OnInit {
   }
 
   redirectTo(uri: Array<string>): void {
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-      this.router.navigate(uri));
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() => this.router.navigate(uri));
   }
-
-
 }
