@@ -13,7 +13,6 @@ import { JobApp } from '../jobapp';
 })
 export class JobAppListComponent implements OnInit {
   jobapps: JobApp[] = [];
-
   displayedColumns: string[] = [
     'position',
     'company',
