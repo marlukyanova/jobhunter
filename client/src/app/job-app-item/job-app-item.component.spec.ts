@@ -23,4 +23,11 @@ describe('JobAppItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  //tick()
+  //const valueServiceSpy = jasmine.createSpyObj('ApiService',['createJobApp', updateJobApp] )
+
+  //1. fake services
+  //2. emulate click
+  //3. check if mock func is called w args passed and values of paramteres (check body if has props)
 });
