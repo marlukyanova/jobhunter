@@ -45,5 +45,6 @@ describe('ApiClientService', () => {
     service.createJobApp(mocks).subscribe();
     const req = httpMock.expectOne(`${service.baseURL}/jobapp`);
     expect(req.request.method).toBe('POST');
+    //TODO: expect(req.request.body).toEqual() type check for post requests.
   });
 });

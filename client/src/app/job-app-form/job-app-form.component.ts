@@ -7,11 +7,11 @@ import { FormGroup, FormControl, ValidationErrors, ValidatorFn } from '@angular/
 import { JobStage } from '../jobstage';
 
 @Component({
-  selector: 'app-job-app-item',
-  templateUrl: './job-app-item.component.html',
-  styleUrls: ['./job-app-item.component.css'],
+  selector: 'app-job-app-form',
+  templateUrl: './job-app-form.component.html',
+  styleUrls: ['./job-app-form.component.css'],
 })
-export class JobAppItemComponent implements OnInit {
+export class JobAppFormComponent implements OnInit {
   states: string[] = ['Passive', 'Active', 'Closed'];
   stages: string[] = [
     'Applied',
@@ -98,6 +98,7 @@ export class JobAppItemComponent implements OnInit {
   }
 
   saveChanges(): void {
+    console.log(this.jobAppForm)
     if (this.isAddMode) {
       this.createJobApp();
     } else {
