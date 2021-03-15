@@ -116,12 +116,18 @@ export class JobAppFormComponent implements OnInit {
 
   createJobApp(): void {
     if (this.jobAppForm !== undefined) {
-      console.log('boink', this.jobAppForm.value);
-
-      this.apiClient.createJobApp(this.jobAppForm.value).subscribe((data) => {
-        console.log(data);
-        this.redirectTo(['jobapp']);
-      });
+      // console.log('boink', this.jobAppForm.value);
+      if (
+        this.jobAppForm.value.position.length > 0 &&
+        this.jobAppForm.value.company.length > 0
+      ) {
+        this.apiClient.createJobApp(this.jobAppForm.value).subscribe((data) => {
+          console.log(data);
+          this.redirectTo(['jobapp']);
+        });
+      } else {
+        alert('Please fill out required fields');
+      }
     }
   }
 

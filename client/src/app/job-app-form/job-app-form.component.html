@@ -1,5 +1,4 @@
 <div *ngIf="jobAppForm" class="jobappform">
-  <h1>banana</h1>
   <form [formGroup]="jobAppForm">
     <mat-card>
       <mat-card-header class="top">
@@ -42,6 +41,7 @@
               <input
                 matInput
                 placeholder="Company"
+                required="true"
                 formControlName="company"
                 required
               />

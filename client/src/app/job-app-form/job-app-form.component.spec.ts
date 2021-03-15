@@ -23,12 +23,25 @@ import { Observable, of } from 'rxjs';
 describe('JobAppFormComponent', () => {
   let component: JobAppFormComponent;
   let fixture: ComponentFixture<JobAppFormComponent>;
-  // let apiClientService: ApiClientService;
-  // let mockApiClientServiceSpy: jasmine.SpyObj<ApiClientService>;
+  let apiClientService: ApiClientService;
+  let mockApiClientServiceSpy: jasmine.SpyObj<ApiClientService>;
   // let de: DebugElement;
-  let mockJobAppForm = new FormGroup({
-    position: new FormControl('Mock Position'),
-    company: new FormControl('Mock Company'),
+
+  let mockJobAppForm1 = new FormGroup({
+    position: new FormControl('Mock job'),
+    company: new FormControl('mock company'),
+    description: new FormControl(''),
+    appliedat: new FormControl(new Date(Date.now())),
+    state: new FormControl('Passive'),
+    stage: new FormControl('Applied'),
+    source: new FormControl(''),
+    addinfo: new FormControl(''),
+    closedat: new FormControl(),
+    closedreason: new FormControl(''),
+  });
+  let mockJobAppForm2 = new FormGroup({
+    position: new FormControl(''),
+    company: new FormControl(''),
     description: new FormControl(''),
     appliedat: new FormControl(new Date(Date.now())),
     state: new FormControl('Passive'),
@@ -39,30 +52,11 @@ describe('JobAppFormComponent', () => {
     closedreason: new FormControl(''),
   });
 
-  let mockJobApp = new JobApp();
-  mockJobApp = {
-    id: 123,
-    createdat: 12312,
-    position: ' some position',
-    company: 'a Mock company',
-    description: '',
-    appliedat: 35453454,
-    state: 'string',
-    stage: 'string',
-    source: 'string',
-    addinfo: '',
-    closedat: 35453454,
-    closedreason: 'string',
-  };
-
-  let h1: HTMLElement;
-  let button: HTMLElement;
-
   beforeEach(async () => {
-    // const spy = jasmine.createSpyObj('ApiClientService', [
-    //   'createJobApp',
-    //   'getJobApp',
-    // ]);
+    const spy = jasmine.createSpyObj('ApiClientService', [
+      'createJobApp',
+      'getJobApp',
+    ]);
 
     await TestBed.configureTestingModule({
       declarations: [JobAppFormComponent],
@@ -71,27 +65,27 @@ describe('JobAppFormComponent', () => {
         HttpClientModule,
         HttpClientTestingModule,
       ],
-      // providers: [
-      //   ApiClientService,
-      //   { provide: ApiClientService, useValue: spy },
-      // ],
+      providers: [
+        ApiClientService,
+        { provide: ApiClientService, useValue: spy },
+      ],
     });
 
-    // apiClientService = TestBed.inject(ApiClientService);
-    // mockApiClientServiceSpy = TestBed.inject(
-    //   ApiClientService
-    // ) as jasmine.SpyObj<ApiClientService>;
+    apiClientService = TestBed.inject(ApiClientService);
+    mockApiClientServiceSpy = TestBed.inject(
+      ApiClientService
+    ) as jasmine.SpyObj<ApiClientService>;
     fixture = TestBed.createComponent(JobAppFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
   it('when in add mode saveChanges button should call createJobApp, when not in addMode it should call updateJobApp', () => {
-    component.jobAppForm = mockJobAppForm;
+    component.jobAppForm = mockJobAppForm1;
     component.isAddMode = true;
     fixture.detectChanges();
     let de = fixture.debugElement.query(By.css('.save-changes-button'));
@@ -103,5 +97,22 @@ describe('JobAppFormComponent', () => {
     spyOn(component, 'updateJobApp');
     de.nativeElement.click();
     expect(component.updateJobApp).toHaveBeenCalled();
+  });
+
+  it('when calling createJobApp with no job title or company it should not call function', () => {
+    component.jobAppForm = mockJobAppForm2;
+    component.isAddMode = true;
+    fixture.detectChanges();
+    let de = fixture.debugElement.query(By.css('.save-changes-button'));
+    spyOn(window, 'alert');
+    de.nativeElement.click();
+    if (
+      component.jobAppForm.value.company === '' ||
+      component.jobAppForm.value.position === ''
+    ) {
+      expect(window.alert).toHaveBeenCalledWith(
+        'Please fill out required fields'
+      );
+    }
   });
 });
