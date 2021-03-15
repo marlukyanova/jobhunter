@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'jobapp/:id/stage/:stageid', component: JobStageItemComponent },
   { path: 'jobapp/:id/stage/new', component: JobStageItemComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

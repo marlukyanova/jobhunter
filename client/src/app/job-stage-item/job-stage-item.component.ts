@@ -4,7 +4,6 @@ import { ApiClientService } from '../api-client.service';
 import { JobAppStateService } from '../job-app-state.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
-
 @Component({
   selector: 'app-job-stage-item',
   templateUrl: './job-stage-item.component.html',
@@ -29,7 +28,7 @@ export class JobStageItemComponent implements OnInit {
     private route: ActivatedRoute,
     private apiClient: ApiClientService,
     private router: Router,
-    private jobAppState: JobAppStateService,
+    private jobAppState: JobAppStateService
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +46,7 @@ export class JobStageItemComponent implements OnInit {
       this.stageid = urlParamStageId;
       this.isAddMode = false;
       this.isClosed = this.jobAppState.getJobAppState();
-      this.getJobStage();      
+      this.getJobStage();
     }
   }
 
@@ -67,6 +66,8 @@ export class JobStageItemComponent implements OnInit {
   }
 
   saveChanges(): void {
+    // console.log(this.isAddMode);
+    // console.log('boink');
     if (this.isAddMode) {
       this.createJobStage();
     } else {
@@ -75,7 +76,8 @@ export class JobStageItemComponent implements OnInit {
   }
 
   createJobStage(): void {
-    if (this.jobStageForm !== undefined)
+    if (this.jobStageForm !== undefined) {
+      console.log(this.jobStageForm.value);
       this.apiClient
         .createJobStage(this.jobid!, this.jobStageForm.value)
         .subscribe({
@@ -86,6 +88,7 @@ export class JobStageItemComponent implements OnInit {
             console.log(error);
           },
         });
+    }
   }
 
   updateJobStage(): void {
