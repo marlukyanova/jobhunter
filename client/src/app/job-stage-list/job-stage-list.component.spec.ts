@@ -18,7 +18,7 @@ describe('JobStageListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create JobStageListComponent', () => {
     expect(component).toBeTruthy();
   });
 });

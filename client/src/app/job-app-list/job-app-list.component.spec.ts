@@ -1,9 +1,4 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { JobAppListComponent } from './job-app-list.component';
 import { of } from 'rxjs';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -18,13 +13,13 @@ const mockJobAppsSorted = require('../mocks/jobapps-sorted.json');
 describe('JobAppListComponent', () => {
   let component: JobAppListComponent;
   let fixture: ComponentFixture<JobAppListComponent>;
-  let mockApiClientService: any;
-  let mockGetJobApps: any;
+  let ApiClientServiceSpy: any;
+  let ApplyFilterSpy: any;
 
   beforeEach(async () => {
-    mockGetJobApps = jasmine.createSpyObj(['getJobApps']);
-    mockApiClientService = jasmine.createSpyObj(['getAllJobApps']);
-    mockApiClientService.getAllJobApps.and.returnValue(of(mockJobAppsUnsorted));
+    ApiClientServiceSpy = jasmine.createSpyObj(['getAllJobApps']);
+    ApiClientServiceSpy.getAllJobApps.and.returnValue(of(mockJobAppsUnsorted));
+    ApplyFilterSpy = jasmine.createSpyObj(['applyFilter']);
 
     await TestBed.configureTestingModule({
       declarations: [JobAppListComponent],
@@ -34,9 +29,7 @@ describe('JobAppListComponent', () => {
         MatSortModule,
         NoopAnimationsModule,
       ],
-      providers: [
-        { provide: ApiClientService, useValue: mockApiClientService },
-      ],
+      providers: [{ provide: ApiClientService, useValue: ApiClientServiceSpy }],
     }).compileComponents();
   });
 
@@ -52,17 +45,21 @@ describe('JobAppListComponent', () => {
 
   it('should call getAllJobApps from API Client upon initialisation', fakeAsync(() => {
     component.ngOnInit();
-    expect(mockApiClientService.getAllJobApps).toHaveBeenCalled();
+    expect(ApiClientServiceSpy.getAllJobApps).toHaveBeenCalled();
   }));
 
   it('should sort the job applications by ID', fakeAsync(() => {
     expect(component.jobapps).toEqual(mockJobAppsSorted);
   }));
 
-  it('should redirect to JobAppItemComponent when Add JobApp button clicked', fakeAsync(() => {
-    const button = fixture.debugElement.query(By.css('.add')).nativeElement;
-    button.click();
-    tick();
-    expect();
+  it('should call applyFilter when filter input is given', fakeAsync(() => {
+    const jobFilterInput: HTMLInputElement = fixture.debugElement.query(
+      By.css('#filter__input')
+    ).nativeElement;
+    jobFilterInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(ApplyFilterSpy).toHaveBeenCalled();
+    });
   }));
 });

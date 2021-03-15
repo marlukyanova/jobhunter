@@ -1,3 +1,5 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterModule } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JobStageItemComponent } from './job-stage-item.component';
@@ -8,9 +10,9 @@ describe('JobStageItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JobStageItemComponent ]
-    })
-      .compileComponents();
+      declarations: [JobStageItemComponent],
+      imports: [RouterModule.forRoot([]), HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

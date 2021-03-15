@@ -3,7 +3,7 @@
   <div class="row">
     <mat-form-field>
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input>
+      <input id="filter__input" matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
     <a class="add" mat-raised-button color="accent" href="jobapp/new"
       >Add JobApp</a
