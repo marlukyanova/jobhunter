@@ -1,10 +1,18 @@
 const { Client } = require("pg");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const db_password = process.env.DB_PASSWORD;
+const db_user = process.env.DB_USER;
+const db_name = process.env.DB_NAME;
+const db_port = process.env.DB_PORT;
 
 const client = new Client({
-  user: "Gabor",
+  user: `${db_user}`,
   host: "localhost",
-  database: "jobhunter",
-  password: "",
+  database: `${db_name}`,
+  password: `${db_password}`,
+  port: db_port,
 });
 
 client
