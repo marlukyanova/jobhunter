@@ -118,7 +118,7 @@ export class JobAppItemComponent implements OnInit {
           this.redirectTo(['jobapp', ''+this.jobid!]);
         },
         error: (error) => {
-          console.log(error);
+          console.error(error);
         },
       });
   }

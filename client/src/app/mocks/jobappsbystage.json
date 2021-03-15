@@ -1,0 +1,18 @@
+[
+    {
+        "description": "Application",
+        "number": 2
+    },
+    {
+        "description": "Phone Screen",
+        "number": 1
+    },
+    {
+        "description": "Interview",
+        "number": 1
+    },
+    {
+        "description": "Offer",
+        "number": 1
+    }
+]

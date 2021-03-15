@@ -38,6 +38,6 @@ export function JobStageFactory(sequelize: Sequelize) {
     jobappId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
+    },
   });
 }

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 2,
+        "position": "Sales Manager",
+        "company": "123 ABC Ltd",
+        "description": "",
+        "state": "Closed",
+        "stage": "Offer",
+        "source": "",
+        "addinfo": "",
+        "closedreason": "Done",
+        "appliedat": "2021-03-13T23:00:00.000Z",
+        "closedat": "2021-03-16T23:00:00.000Z",
+        "createdAt": "2021-03-13T11:44:20.306Z",
+        "updatedAt": "2021-03-13T15:54:57.048Z"
+    },
+    {
+        "id": 1,
+        "position": "Account Manager",
+        "company": "ABC 123 Ltd",
+        "description": "Account Manager role.",
+        "state": "Active",
+        "stage": "Applied",
+        "source": "",
+        "addinfo": "",
+        "closedreason": "",
+        "appliedat": "2021-03-13T11:43:48.039Z",
+        "closedat": "",
+        "createdAt": "2021-03-13T11:43:58.445Z",
+        "updatedAt": "2021-03-13T15:55:27.232Z"
+    }
+]

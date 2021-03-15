@@ -82,7 +82,7 @@ export class JobStageItemComponent implements OnInit {
             this.router.navigateByUrl(`/jobapp/${this.jobid}`);
           },
           error: (error) => {
-            console.log(error);
+            console.error(error);
           },
         });
   }
@@ -102,7 +102,7 @@ export class JobStageItemComponent implements OnInit {
             );
           },
           error: (error) => {
-            console.log(error);
+            console.error(error);
           },
         });
   }

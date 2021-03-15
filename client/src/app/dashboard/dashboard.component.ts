@@ -26,28 +26,28 @@ export class DashboardComponent implements OnInit {
 
   getStageAnalysisData(): void {
     this.apiClient.getJobsByStages().subscribe(data => {
-      console.log('getStageAnalysisData', data);
+      // console.log('getStageAnalysisData', data);
       this.stageAnalysisData = data;
     });
   }
 
   getStateAnalysisData(): void {
     this.apiClient.getJobsByState().subscribe(data => {
-      console.log('getStateAnalysisData', data);
+      // console.log('getStateAnalysisData', data);
       this.stateAnalysisData = data;
     });
   }
 
   getTimeStats(): void {
     this.apiClient.getTimeStats().subscribe(data => {
-      console.log('getTimeStats', data);
+      // console.log('getTimeStats', data);
       this.timesAnalysisData = data;
     });
   }
 
   getStagesStats(): void {
     this.apiClient.getStagesStats().subscribe(data => {
-      console.log('getStagesStats', data);
+      // console.log('getStagesStats', data);
       this.stagesStatsData = data;
     });
   }

@@ -64,9 +64,9 @@ exports.getTimeStats = async (req: Request, res: Response): Promise<void> => {
     const queryRes = await sequelize.query(query);
     type ResultObject = {};
     const result: ResultObject[] = [];
-    result.push({ description: 'Minimum', number: queryRes[0][0].min || 0 });
-    result.push({ description: 'Maximum', number: queryRes[0][0].max || 0 });
-    result.push({ description: 'Average', number: queryRes[0][0].avg || 0 });
+    result.push({ description: 'Minimum', number: queryRes[0][0].min });
+    result.push({ description: 'Maximum', number: queryRes[0][0].max });
+    result.push({ description: 'Average', number: queryRes[0][0].avg });
     res.status(200);
     res.send(result);
   } catch (err) {
@@ -80,17 +80,16 @@ exports.getStagesStats = async (req: Request, res: Response): Promise<void> => {
                 SELECT ROUND(AVG(s.count)) AS AVG, MAX(s.count) AS MAX, MIN(s.count) AS MIN
                 FROM
                 (SELECT COUNT(*) AS count
-                FROM jobstages) AS s;
+                FROM jobstages
+                GROUP BY "jobappId") AS s;
                 `;
     const queryRes = await sequelize.query(query);
-    console.log(queryRes); 
     type ResultObject = {};
     const result: ResultObject[] = [];
     result.push({ description: 'Minimum', number: queryRes[0][0].min });
     result.push({ description: 'Maximum', number: queryRes[0][0].max });
     result.push({ description: 'Average', number: queryRes[0][0].avg });
     res.status(200);
-    console.log(result);
     res.send(result);
   } catch (err) {
     console.error(err);
