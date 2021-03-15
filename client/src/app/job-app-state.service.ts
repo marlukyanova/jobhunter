@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JobAppStateService {
-
   isJobAppClosed?: boolean;
-  
-  constructor() { }
-  
+
+  constructor() {}
+
   getJobAppState(): boolean {
-    return this.isJobAppClosed!; 
+    return this.isJobAppClosed!;
   }
 
   addJobAppState(isClosed: boolean): void {
     this.isJobAppClosed = isClosed;
   }
-
 }
