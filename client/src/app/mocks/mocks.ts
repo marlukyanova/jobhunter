@@ -1,3 +1,4 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { JobApp } from '../jobapp';
 
 const jobApp: JobApp = {
@@ -15,4 +16,19 @@ const jobApp: JobApp = {
   closedat: null,
 };
 
-export default jobApp;
+const invalidStage = new FormGroup({
+  stage: new FormControl(''),
+  createdat: new FormControl(new Date(Date.now())),
+  date: new FormControl(''),
+  addinfo: new FormControl(''),
+})
+
+const validStage = new FormGroup({
+  stage: new FormControl('valid'),
+  createdat: new FormControl(new Date(Date.now())),
+  date: new FormControl(''),
+  addinfo: new FormControl(''),
+})
+
+
+export {jobApp, invalidStage, validStage}
