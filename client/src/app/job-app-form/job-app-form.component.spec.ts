@@ -20,7 +20,7 @@ import {
 import { By } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 
-describe('JobAppItemComponent', () => {
+describe('JobAppFormComponent', () => {
   let component: JobAppFormComponent;
   let fixture: ComponentFixture<JobAppFormComponent>;
   // let apiClientService: ApiClientService;
@@ -86,9 +86,9 @@ describe('JobAppItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 
   it('when in add mode saveChanges button should call createJobApp, when not in addMode it should call updateJobApp', () => {
     component.jobAppForm = mockJobAppForm;
