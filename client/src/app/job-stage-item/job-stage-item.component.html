@@ -2,7 +2,12 @@
   <mat-card>
     <mat-card-header>
       <div class="buttons row">
-        <button mat-raised-button color="primary" (click)="saveChanges()" [disabled]="isClosed">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="saveChanges()"
+          [disabled]="isClosed"
+        >
           Save Changes
         </button>
         <button mat-raised-button color="primary" (click)="returnToJobApp()">
