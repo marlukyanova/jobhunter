@@ -67,7 +67,7 @@ export class JobStageItemComponent implements OnInit {
 
   saveChanges(): void {
     // console.log(this.isAddMode);
-    // console.log('boink');
+    console.log('boink');
     if (this.isAddMode) {
       this.createJobStage();
     } else {
