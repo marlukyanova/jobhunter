@@ -1,24 +1,24 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { JobAppItemComponent } from './job-app-item.component';
+import { JobAppFormComponent } from './job-app-form.component';
 
 describe('JobAppItemComponent', () => {
-  let component: JobAppItemComponent;
-  let fixture: ComponentFixture<JobAppItemComponent>;
+  let component: JobAppFormComponent;
+  let fixture: ComponentFixture<JobAppFormComponent>;
+  let button: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [JobAppItemComponent],
+      declarations: [JobAppFormComponent],
       imports: [RouterModule.forRoot([]), HttpClientModule],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(JobAppItemComponent);
+    fixture = TestBed.createComponent(JobAppFormComponent);
     component = fixture.componentInstance;
+    button = fixture.nativeElement.query('Save Changes')
     fixture.detectChanges();
-  });
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();

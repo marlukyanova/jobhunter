@@ -34,7 +34,6 @@ describe('ApiClientService', () => {
       jobappid: 2,
       jobstage: 1,
     };
-
     service.getJobStage(dummyJobApp.jobappid, dummyJobApp.jobstage).subscribe();
     const req = httpMock.expectOne(
       `${service.baseURL}/jobapp/${dummyJobApp.jobappid}/stage/${dummyJobApp.jobstage}`
