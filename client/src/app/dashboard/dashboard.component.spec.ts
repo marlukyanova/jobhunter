@@ -1,25 +1,55 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DashboardComponent } from './dashboard.component';
+import { ApiClientService } from '../api-client.service';
+
+jest.mock('../api-client.service');
 
 describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
-    })
-    .compileComponents();
-  });
+  let fixture: DashboardComponent;
+  let apiMock: ApiClientService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = new DashboardComponent(apiMock);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Set up component', () => {
+    describe('ngOnInit', () => {
+      it('should call getStageAnalysisData', () => {
+        const getStageAnalysisDataSpy = jest.spyOn(
+          fixture,
+          'getStageAnalysisData'
+        );
+
+        fixture.ngOnInit();
+
+        expect(getStageAnalysisDataSpy).toBeCalled();
+      });
+
+      it('should call getStateAnalysisData', () => {
+        const getStateAnalysisDataSpy = jest.spyOn(
+          fixture,
+          'getStateAnalysisData'
+        );
+
+        fixture.ngOnInit();
+
+        expect(getStateAnalysisDataSpy).toBeCalled();
+      });
+
+      it('should call getTimeStats', () => {
+        const getTimeStatsSpy = jest.spyOn(fixture, 'getTimeStats');
+
+        fixture.ngOnInit();
+
+        expect(getTimeStatsSpy).toBeCalled();
+      });
+
+      it('should call getStagesStats', () => {
+        const getStagesStatsSpy = jest.spyOn(fixture, 'getStagesStats');
+
+        fixture.ngOnInit();
+
+        expect(getStagesStatsSpy).toBeCalled();
+      });
+    });
   });
 });
