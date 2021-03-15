@@ -1,40 +1,24 @@
-// import { JobAppListComponent } from './job-app-list.component';
-// import { MockApiClientService } from '../mocks/mockApiService';
-// import { ApiClientService } from '../api-client.service';
-// import { HttpClient } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// jest.mock('../api-client.service', () => MockApiClientService);
-// // const http = new HttpClient(null);
-// // ApiClientService.getAllJobs = MockApiClientService;
+import { JobAppListComponent } from './job-app-list.component';
 
-// describe('JobAppListComponent', () => {
-//   let fixture: JobAppListComponent;
-//   let apiMock: ApiClientService;
-//   let eventMock: Event;
+describe('JobAppListComponent', () => {
+  let component: JobAppListComponent;
+  let fixture: ComponentFixture<JobAppListComponent>;
 
-//   beforeEach(() => {
-//     fixture = new JobAppListComponent(apiMock);
-//   });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [JobAppListComponent],
+    }).compileComponents();
+  });
 
-//   describe('Set up component', () => {
-//     describe('ngOnInit', () => {
-//       it('should call getJobApps', () => {
-//         // const getJobAppsSpy = jest.spyOn(fixture, 'getJobApps');
+  beforeEach(() => {
+    fixture = TestBed.createComponent(JobAppListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//         fixture.ngOnInit();
-
-//         expect(fixture.getJobApps).toBeCalled();
-//       });
-//     });
-//   });
-
-//   describe('applyFilter', () => {
-//     it('should take a value and return list of filtered apps', () => {
-//       const applyFilterSpy = jest.spyOn(fixture, 'applyFilter');
-
-//       fixture.applyFilter(eventMock);
-
-//       expect(applyFilterSpy).toBeCalled();
-//     });
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

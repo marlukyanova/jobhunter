@@ -1,21 +1,24 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { JobStageListComponent } from './job-stage-list.component';
 
 describe('JobStageListComponent', () => {
-  let fixture: JobStageListComponent;
+  let component: JobStageListComponent;
+  let fixture: ComponentFixture<JobStageListComponent>;
 
-  beforeEach(() => {
-    fixture = new JobStageListComponent();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [JobStageListComponent],
+    }).compileComponents();
   });
 
-  describe('Set up component', () => {
-    describe('ngOnChange', () => {
-      it('should ', () => {
-        // const getJobAppsSpy = jest.spyOn(fixture, 'getJobApps');
+  beforeEach(() => {
+    fixture = TestBed.createComponent(JobStageListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-        fixture.ngOnInit();
-
-        expect(fixture.getJobApps).toBeCalled();
-      });
-    });
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });

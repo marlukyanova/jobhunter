@@ -1,40 +1,24 @@
-// import { BarComponent } from './bar.component';
-// import { Data } from '../data';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// describe('BarComponent', () => {
-//   let fixture: BarComponent;
+import { BarComponent } from './bar.component';
 
-//   beforeEach(() => {
-//     fixture = new BarComponent;
-//   });
+describe('BarComponent', () => {
+  let component: BarComponent;
+  let fixture: ComponentFixture<BarComponent>;
 
-//   describe('createSvg', () => {
-//     it ('should generate ', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [BarComponent],
+    }).compileComponents();
+  });
 
-//     })
-    
-//   })
-//   describe('createSvg', () => {
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   })
-//   describe('createSvg', () => {
-
-//   })
-//   describe('createSvg', () => {
-
-//   })
-//   describe('createSvg', () => {
-
-//   })
-//   describe('createSvg', () => {
-
-//   })
-//   describe('createSvg', () => {
-
-//   })
-//   describe('createSvg', () => {
-
-//   })
-
-
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
