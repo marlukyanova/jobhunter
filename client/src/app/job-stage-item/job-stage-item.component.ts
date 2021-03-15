@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
 import { JobAppStateService } from '../job-app-state.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { invalidStage, validStage } from '../mocks/mocks';
 
 @Component({
   selector: 'app-job-stage-item',
@@ -66,13 +67,17 @@ export class JobStageItemComponent implements OnInit {
   }
 
   saveChanges(): void {
-    // console.log(this.isAddMode);
-    // console.log('boink');
-    if (this.isAddMode) {
-      this.createJobStage();
-    } else {
-      this.updateJobStage();
+    if(this.jobStageForm) {
+      if(this.jobStageForm.value.stage) {
+        console.log('boink');
+        if (this.isAddMode) {
+          this.createJobStage();
+        } else {
+          this.updateJobStage();
+        }
+      }
     }
+    // console.log(this.isAddMode);
   }
 
   createJobStage(): void {
