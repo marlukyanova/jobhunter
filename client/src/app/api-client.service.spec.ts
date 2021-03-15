@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { ApiClientService } from './api-client.service';
-import mocks from './mocks/mocks';
+import { jobApp } from './mocks/mocks';
 
 describe('ApiClientService', () => {
   let service: ApiClientService;
@@ -42,7 +42,7 @@ describe('ApiClientService', () => {
   });
 
   it('#createJobApp should use correct URL and method and be only called once', () => {
-    service.createJobApp(mocks).subscribe();
+    service.createJobApp(jobApp).subscribe();
     const req = httpMock.expectOne(`${service.baseURL}/jobapp`);
     expect(req.request.method).toBe('POST');
     //TODO: expect(req.request.body).toEqual() type check for post requests.
