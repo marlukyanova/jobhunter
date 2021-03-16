@@ -1,5 +1,5 @@
-const { Client } = require('pg');
-const dotenv = require('dotenv');
+import { Client } from 'pg';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const db_password = process.env.DB_PASSWORD;
@@ -20,4 +20,4 @@ client
   .then(() => console.log('connected to DB'))
   .catch((err) => console.error('connection error ' + err));
 
-module.exports = client;
+export default client;

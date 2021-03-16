@@ -1,6 +1,6 @@
-const client = require('./index');
+import client from './index';
 
-exports.getAll = async (id) => {
+const getAll = async (id) => {
   // console.log('running query');
   const queryRes = await client.query(
     'select * from jobstage where jobappid = $1',
@@ -18,7 +18,7 @@ exports.getAll = async (id) => {
   return res;
 };
 
-exports.getStage = async (stageid) => {
+const getStage = async (stageid) => {
   // console.log('running a query for stageid', stageid);
   const queryRes = await client.query('select * from jobstage where id = $1', [
     stageid,
@@ -34,7 +34,7 @@ exports.getStage = async (stageid) => {
   return res;
 };
 
-exports.createStage = async (id, stage) => {
+const createStage = async (id, stage) => {
   //TODO: check transactions in postgres
   const query = `
                 WITH src AS (
@@ -64,7 +64,7 @@ exports.createStage = async (id, stage) => {
   return res.rows[0];
 };
 
-exports.editStage = async (stageid, stage) => {
+const editStage = async (stageid, stage) => {
   // console.log('running query', stageid, stage);
   //TODO: check transactions in postgres
   const query = `
@@ -89,4 +89,11 @@ exports.editStage = async (stageid, stage) => {
   // console.log(res.rows[0]);
   //TODO: decide what to return, ideally return updated jobapp and updated stage
   return res.rows[0];
+};
+
+const jobstageModel = {
+  getAll,
+  getStage,
+  createStage,
+  editStage,
 };
