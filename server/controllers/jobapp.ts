@@ -1,6 +1,6 @@
 import jobappModel from '../models/jobapp';
 
-const getAllJobs = async (ctx) => {
+const getAllJobs = async (ctx: any) => {
   try {
     // console.log('received get request');
     ctx.body = await jobappModel.getAll();
@@ -10,7 +10,7 @@ const getAllJobs = async (ctx) => {
   }
 };
 
-const getJobApp = async (ctx) => {
+const getJobApp = async (ctx: any) => {
   try {
     // console.log('received get request for jobapp');
     const id = ctx.request.params.id;
@@ -21,7 +21,7 @@ const getJobApp = async (ctx) => {
   }
 };
 
-const createJobApp = async (ctx) => {
+const createJobApp = async (ctx: any) => {
   try {
     // console.log("new request to create a jobapp");
     const job = ctx.request.body;
@@ -35,7 +35,7 @@ const createJobApp = async (ctx) => {
   }
 };
 
-const editJobApp = async (ctx) => {
+const editJobApp = async (ctx: any) => {
   try {
     // console.log('request to update a jobapp');
     const job = ctx.request.body;

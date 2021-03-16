@@ -12,7 +12,6 @@ const client = new Client({
   host: 'localhost',
   database: `${db_name}`,
   password: `${db_password}`,
-  port: db_port,
 });
 
 client

@@ -1,6 +1,7 @@
 import client from './index';
+import { JobStage } from '../interfaces/jobStage';
 
-const getAll = async (id) => {
+const getAll = async (id: number) => {
   // console.log('running query');
   const queryRes = await client.query(
     'select * from jobstage where jobappid = $1',
@@ -18,7 +19,7 @@ const getAll = async (id) => {
   return res;
 };
 
-const getStage = async (stageid) => {
+const getStage = async (stageid: number) => {
   // console.log('running a query for stageid', stageid);
   const queryRes = await client.query('select * from jobstage where id = $1', [
     stageid,
@@ -34,7 +35,7 @@ const getStage = async (stageid) => {
   return res;
 };
 
-const createStage = async (id, stage) => {
+const createStage = async (id: string, stage: JobStage) => {
   //TODO: check transactions in postgres
   const query = `
                 WITH src AS (
@@ -64,7 +65,7 @@ const createStage = async (id, stage) => {
   return res.rows[0];
 };
 
-const editStage = async (stageid, stage) => {
+const editStage = async (stageid: string, stage: JobStage) => {
   // console.log('running query', stageid, stage);
   //TODO: check transactions in postgres
   const query = `
@@ -97,3 +98,5 @@ const jobstageModel = {
   createStage,
   editStage,
 };
+
+export default jobstageModel;

@@ -1,4 +1,5 @@
 import client from './index';
+import { JobApp } from '../interfaces/job';
 
 const getAll = async () => {
   // console.log('getting all jobapps from db');
@@ -18,7 +19,7 @@ const getAll = async () => {
   return res;
 };
 
-const getJobApp = async (id) => {
+const getJobApp = async (id: number) => {
   // console.log('running db query');
   const queryRes = await client.query('select * from jobapp where id=$1', [id]);
   // console.log(res.rows[0]);
@@ -39,7 +40,7 @@ const getJobApp = async (id) => {
   return res;
 };
 
-const createJobApp = async (job) => {
+const createJobApp = async (job: JobApp) => {
   // console.log("dis ", job);
   const query = `INSERT INTO jobapp(createdat, position, company, appliedat, description, addinfo, state, stage) 
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -60,7 +61,7 @@ const createJobApp = async (job) => {
   return res.rows[0];
 };
 
-const editJobApp = async (id, job) => {
+const editJobApp = async (id: number, job: JobApp) => {
   //console.log('data to update', job);
   const query = `
                 UPDATE jobapp

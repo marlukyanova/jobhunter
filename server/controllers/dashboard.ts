@@ -1,6 +1,6 @@
 import dashboardModel from '../models/dashboard';
 
-const getJobAppsbyStage = async (ctx) => {
+const getJobAppsbyStage = async (ctx: any) => {
   try {
     ctx.body = await dashboardModel.getJobAppsByStages();
     ctx.status = 200;
@@ -9,7 +9,7 @@ const getJobAppsbyStage = async (ctx) => {
   }
 };
 
-const getJobAppsByState = async (ctx) => {
+const getJobAppsByState = async (ctx: any) => {
   try {
     ctx.body = await dashboardModel.getJobAppByState();
     ctx.status = 200;
@@ -18,7 +18,7 @@ const getJobAppsByState = async (ctx) => {
   }
 };
 
-const getTimeStats = async (ctx) => {
+const getTimeStats = async (ctx: any) => {
   try {
     ctx.body = await dashboardModel.getTimeStats();
     ctx.status = 200;
@@ -27,7 +27,7 @@ const getTimeStats = async (ctx) => {
   }
 };
 
-const getStagesStats = async (ctx) => {
+const getStagesStats = async (ctx: any) => {
   try {
     ctx.body = await dashboardModel.getStagesStats();
     ctx.status = 200;
