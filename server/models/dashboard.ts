@@ -1,6 +1,6 @@
-const client = require('./index');
+import client from './index';
 
-exports.getJobAppsByStages = async() => {
+const getJobAppsByStages = async() => {
   const query = `
                 SELECT 'Application' AS stage, COUNT(*) AS number 
                 FROM jobapp
@@ -20,7 +20,7 @@ exports.getJobAppsByStages = async() => {
   return res;
 };
 
-exports.getJobAppByState = async() => {
+const getJobAppByState = async() => {
   const query = `
                 SELECT state, COUNT(*)
                 FROM jobapp
@@ -37,7 +37,7 @@ exports.getJobAppByState = async() => {
   return res;
 };
 
-exports.getTimeStats = async() => {
+const getTimeStats = async() => {
   const query = `
                 SELECT ROUND(AVG(c.diff)) AS AVG, MAX(c.diff) AS MAX, MIN(c.diff) AS MIN
                 FROM
@@ -55,7 +55,7 @@ exports.getTimeStats = async() => {
   return res;
 };
 
-exports.getStagesStats = async() => {
+const getStagesStats = async() => {
   const query = `
                 SELECT ROUND(AVG(s.count)) AS AVG, MAX(s.count) AS MAX, MIN(s.count) AS MIN
                 FROM 
@@ -69,4 +69,11 @@ exports.getStagesStats = async() => {
   res.push({description: 'Maximum', number: queryRes.rows[0].max});
   res.push({description: 'Average', number: queryRes.rows[0].avg});
   return res;
+}
+
+export default {
+  getJobAppsByStages,
+  getJobAppByState,
+  getTimeStats,
+  getStagesStats,
 }

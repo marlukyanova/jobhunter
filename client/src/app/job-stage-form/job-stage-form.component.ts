@@ -7,10 +7,10 @@ import { invalidStage, validStage } from '../mocks/mocks';
 
 @Component({
   selector: 'app-job-stage-item',
-  templateUrl: './job-stage-item.component.html',
-  styleUrls: ['./job-stage-item.component.css'],
+  templateUrl: './job-stage-form.component.html',
+  styleUrls: ['./job-stage-form.component.css'],
 })
-export class JobStageItemComponent implements OnInit {
+export class JobStageFormComponent implements OnInit {
   stages: string[] = [
     'Applied',
     'Phone Screen',

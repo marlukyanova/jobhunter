@@ -2,10 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { invalidStage, validStage } from '../mocks/mocks';
-import { JobStageItemComponent } from './job-stage-item.component';
+import { JobStageItemComponent } from './job-stage-form.component';
 import { By } from '@angular/platform-browser';
 
-describe('JobStageItemComponent', () => {
+describe('JobStageFormComponent', () => {
   let component: JobStageItemComponent;
   let fixture: ComponentFixture<JobStageItemComponent>;
   let button: HTMLElement;

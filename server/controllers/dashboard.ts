@@ -1,6 +1,6 @@
-const dashboard = require('../models/dashboard');
+import dashboard from '../models/dashboard';
 
-exports.getJobAppsbyStage = async (ctx) => {
+const getJobAppsbyStage = async (ctx) => {
   try {
     ctx.body = await dashboard.getJobAppsByStages();
     ctx.status = 200;
@@ -9,7 +9,7 @@ exports.getJobAppsbyStage = async (ctx) => {
   }
 };
 
-exports.getJobAppsByState = async (ctx) => {
+const getJobAppsByState = async (ctx) => {
   try {
     ctx.body = await dashboard.getJobAppByState();
     ctx.status = 200;
@@ -18,7 +18,7 @@ exports.getJobAppsByState = async (ctx) => {
   }
 };
 
-exports.getTimeStats = async (ctx) => {
+const getTimeStats = async (ctx) => {
   try{
     ctx.body = await dashboard.getTimeStats();
     ctx.status = 200;
@@ -27,12 +27,18 @@ exports.getTimeStats = async (ctx) => {
   }
 };
 
-exports.getStagesStats = async (ctx) => {
+const getStagesStats = async (ctx) => {
   try {
-    // console.log('got request');
     ctx.body = await dashboard.getStagesStats();
     ctx.status = 200;
   } catch (err) {
     ctx.status = 500;
   }
 };
+
+export {
+  getJobAppsbyStage,
+  getJobAppsByState,
+  getTimeStats,
+  getStagesStats,
+}
