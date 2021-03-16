@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
 import { JobAppStateService } from '../job-app-state.service';
-import { FormGroup, FormControl } from '@angular/forms';
-import { invalidStage, validStage } from '../mocks/mocks';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+// import { invalidStage, validStage } from '../mocks/mocks';
 
 @Component({
   selector: 'app-job-stage-item',
@@ -38,7 +38,7 @@ export class JobStageFormComponent implements OnInit {
     if (urlParamStageId === 'new') {
       this.isAddMode = true;
       this.jobStageForm = new FormGroup({
-        stage: new FormControl(''),
+        stage: new FormControl('', Validators.required),
         createdat: new FormControl(new Date(Date.now())),
         date: new FormControl(''),
         addinfo: new FormControl(''),
@@ -67,8 +67,8 @@ export class JobStageFormComponent implements OnInit {
   }
 
   saveChanges(): void {
-    if(this.jobStageForm) {
-      if(this.jobStageForm.value.stage) {
+    if (this.jobStageForm) {
+      if (this.jobStageForm.value.stage) {
         console.log('boink');
         if (this.isAddMode) {
           this.createJobStage();

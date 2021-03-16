@@ -2,23 +2,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { invalidStage, validStage } from '../mocks/mocks';
-import { JobStageItemComponent } from './job-stage-form.component';
+import { JobStageFormComponent } from './job-stage-form.component';
 import { By } from '@angular/platform-browser';
 
 describe('JobStageFormComponent', () => {
-  let component: JobStageItemComponent;
-  let fixture: ComponentFixture<JobStageItemComponent>;
+  let component: JobStageFormComponent;
+  let fixture: ComponentFixture<JobStageFormComponent>;
   let button: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [JobStageItemComponent],
+      declarations: [JobStageFormComponent],
       imports: [HttpClientModule, RouterModule.forRoot([])],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JobStageItemComponent);
+    fixture = TestBed.createComponent(JobStageFormComponent);
     component = fixture.componentInstance;
 
     component.jobStageForm = invalidStage;
@@ -60,7 +60,5 @@ describe('JobStageFormComponent', () => {
     spyOn(component, 'createJobStage');
     de.nativeElement.click();
     expect(component.createJobStage).not.toHaveBeenCalled();
-  })
-
-
+  });
 });
