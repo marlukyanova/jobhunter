@@ -1,10 +1,10 @@
-const Router = require("koa-router");
+import Router from "koa-router";
 
 const jobapp = require("./controllers/jobapp");
 const jobstage = require("./controllers/jobstage");
 const dashboard = require("./controllers/dashboard");
 
-const router = new Router();
+const router: Router = new Router();
 
 router.get("/jobapp", jobapp.getAllJobs);
 router.get("/jobapp/:id", jobapp.getJobApp);
@@ -21,4 +21,4 @@ router.get("/dashboard/byStates", dashboard.getJobAppsByState);
 router.get("/dashboard/times", dashboard.getTimeStats);
 router.get("/dashboard/stages", dashboard.getStagesStats);
 
-module.exports = router;
+export default router;
