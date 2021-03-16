@@ -1,10 +1,10 @@
-const client = require("./index");
+const client = require('./index');
 
 exports.getAll = async (id) => {
   // console.log('running query');
   const queryRes = await client.query(
     'select * from jobstage where jobappid = $1',
-    [id]
+    [id],
   );
   // console.log(res.rows);
   const res = queryRes.rows.map((row) => {

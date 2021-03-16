@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +17,11 @@
     "koa-router": "^10.0.0",
     "nodemon": "^2.0.7",
     "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.1",
+    "@types/koa__cors": "^3.0.2",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.4.1"
   }
 }

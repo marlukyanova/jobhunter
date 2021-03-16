@@ -1,8 +1,8 @@
-const client = require("./index");
+const client = require('./index');
 
 exports.getAll = async () => {
   // console.log('getting all jobapps from db');
-  const queryRes = await client.query("select * from jobapp");
+  const queryRes = await client.query('select * from jobapp');
   const res = queryRes.rows.map((row) => {
     return {
       id: row.id,
@@ -20,7 +20,7 @@ exports.getAll = async () => {
 
 exports.getJobApp = async (id) => {
   // console.log('running db query');
-  const queryRes = await client.query("select * from jobapp where id=$1", [id]);
+  const queryRes = await client.query('select * from jobapp where id=$1', [id]);
   // console.log(res.rows[0]);
   const res = {
     id: queryRes.rows[0].id,

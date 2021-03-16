@@ -1,4 +1,4 @@
-const jobstage = require("../models/jobstage");
+const jobstage = require('../models/jobstage');
 
 exports.getAllStages = async (ctx) => {
   try {
