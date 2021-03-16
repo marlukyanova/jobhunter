@@ -22,6 +22,7 @@
               mat-raised-button
               color="primary"
               type="button"
+              class="save-changes-button"
               (click)="saveChanges()"
               [disabled]="isClosed"
             >
@@ -40,6 +41,7 @@
               <input
                 matInput
                 placeholder="Company"
+                required="true"
                 formControlName="company"
                 required
               />
