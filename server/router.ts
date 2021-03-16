@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import * as Router from 'koa-router';
 
 import jobapp from './controllers/jobapp';
 import jobstage from './controllers/jobstage';
