@@ -38,7 +38,7 @@ export class JobAppFormComponent implements OnInit {
     private route: ActivatedRoute,
     private apiClient: ApiClientService,
     private router: Router,
-    private jobAppState: JobAppStateService
+    private jobAppState: JobAppStateService,
   ) {}
 
   ngOnInit(): void {
@@ -76,10 +76,10 @@ export class JobAppFormComponent implements OnInit {
           position: new FormControl(data.position ? data.position : ''),
           company: new FormControl(data.company ? data.company : ''),
           description: new FormControl(
-            data.description ? data.description : ''
+            data.description ? data.description : '',
           ),
           appliedat: new FormControl(
-            data.appliedat ? data.appliedat : new Date(Date.now())
+            data.appliedat ? data.appliedat : new Date(Date.now()),
           ),
           state: new FormControl(data.state ? data.state : 'Passive'),
           stage: new FormControl(data.stage ? data.stage : 'Applied'),
@@ -87,7 +87,7 @@ export class JobAppFormComponent implements OnInit {
           addinfo: new FormControl(data.addinfo ? data.addinfo : ''),
           closedat: new FormControl(data.closedreason ? data.closedat : ''),
           closedreason: new FormControl(
-            data.closedreason ? data.closedreason : ''
+            data.closedreason ? data.closedreason : '',
           ),
         });
         if (this.isClosed) this.jobAppForm.disable();
@@ -116,7 +116,6 @@ export class JobAppFormComponent implements OnInit {
 
   createJobApp(): void {
     if (this.jobAppForm !== undefined) {
-      // console.log('boink', this.jobAppForm.value);
       if (
         this.jobAppForm.value.position.length > 0 &&
         this.jobAppForm.value.company.length > 0
