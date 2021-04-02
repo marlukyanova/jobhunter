@@ -8,12 +8,24 @@
         </div>
         <div class="buttons row">
           <div *ngIf="!isAddMode">
-            <button mat-raised-button color="primary" (click)="createStage()" [disabled]="isClosed">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="createStage()"
+              [disabled]="isClosed"
+            >
               New Stage
             </button>
           </div>
           <div>
-            <button mat-raised-button color="primary" (click)="saveChanges()" [disabled]="isClosed">
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              class="save-changes-button"
+              (click)="saveChanges()"
+              [disabled]="isClosed"
+            >
               Save Changes
             </button>
           </div>
@@ -29,6 +41,7 @@
               <input
                 matInput
                 placeholder="Company"
+                required="true"
                 formControlName="company"
                 required
               />

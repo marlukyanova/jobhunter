@@ -9,6 +9,6 @@ export class JobApp {
   'stage': string;
   'source': string;
   'addinfo': string;
-  'closedat': number|null;
+  'closedat': number | null;
   'closedreason': string;
 }

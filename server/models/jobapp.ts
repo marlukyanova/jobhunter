@@ -1,6 +1,7 @@
-const client = require('./index');
+import client from './index';
+import { JobApp } from '../interfaces/job';
 
-exports.getAll = async () => {
+const getAll = async () => {
   // console.log('getting all jobapps from db');
   const queryRes = await client.query('select * from jobapp');
   const res = queryRes.rows.map((row) => {
@@ -18,7 +19,7 @@ exports.getAll = async () => {
   return res;
 };
 
-exports.getJobApp = async (id) => {
+const getJobApp = async (id: number) => {
   // console.log('running db query');
   const queryRes = await client.query('select * from jobapp where id=$1', [id]);
   // console.log(res.rows[0]);
@@ -39,7 +40,8 @@ exports.getJobApp = async (id) => {
   return res;
 };
 
-exports.createJobApp = async (job) => {
+const createJobApp = async (job: JobApp) => {
+  // console.log("dis ", job);
   const query = `INSERT INTO jobapp(createdat, position, company, appliedat, description, addinfo, state, stage) 
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                  RETURNING *;`;
@@ -53,14 +55,14 @@ exports.createJobApp = async (job) => {
     job.state,
     job.stage,
   ];
-  // console.log('creating new job in db with values', values);
+  // console.log("creating new job in db with values", values);
   const res = await client.query(query, values);
-  // console.log('result', res.rows[0]);
+  // console.log("result", res.rows[0]);
   return res.rows[0];
 };
 
-exports.editJobApp = async (id, job) => {
-  // console.log('data to update', job);
+const editJobApp = async (id: number, job: JobApp) => {
+  //console.log('data to update', job);
   const query = `
                 UPDATE jobapp
                 SET 
@@ -95,3 +97,12 @@ exports.editJobApp = async (id, job) => {
   // console.log(res.rows[0]);
   return res.rows;
 };
+
+const jobappModel = {
+  getAll,
+  getJobApp,
+  createJobApp,
+  editJobApp,
+};
+
+export default jobappModel;

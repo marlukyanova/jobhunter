@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
 import { JobAppStateService } from '../job-app-state.service';
-import { FormGroup, FormControl } from '@angular/forms';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+// import { invalidStage, validStage } from '../mocks/mocks';
 
 @Component({
   selector: 'app-job-stage-item',
-  templateUrl: './job-stage-item.component.html',
-  styleUrls: ['./job-stage-item.component.css'],
+  templateUrl: './job-stage-form.component.html',
+  styleUrls: ['./job-stage-form.component.css'],
 })
-export class JobStageItemComponent implements OnInit {
+export class JobStageFormComponent implements OnInit {
   stages: string[] = [
     'Applied',
     'Phone Screen',
@@ -29,7 +29,7 @@ export class JobStageItemComponent implements OnInit {
     private route: ActivatedRoute,
     private apiClient: ApiClientService,
     private router: Router,
-    private jobAppState: JobAppStateService,
+    private jobAppState: JobAppStateService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class JobStageItemComponent implements OnInit {
     if (urlParamStageId === 'new') {
       this.isAddMode = true;
       this.jobStageForm = new FormGroup({
-        stage: new FormControl(''),
+        stage: new FormControl('', Validators.required),
         createdat: new FormControl(new Date(Date.now())),
         date: new FormControl(''),
         addinfo: new FormControl(''),
@@ -47,7 +47,7 @@ export class JobStageItemComponent implements OnInit {
       this.stageid = urlParamStageId;
       this.isAddMode = false;
       this.isClosed = this.jobAppState.getJobAppState();
-      this.getJobStage();      
+      this.getJobStage();
     }
   }
 
@@ -67,15 +67,22 @@ export class JobStageItemComponent implements OnInit {
   }
 
   saveChanges(): void {
-    if (this.isAddMode) {
-      this.createJobStage();
-    } else {
-      this.updateJobStage();
+    if (this.jobStageForm) {
+      if (this.jobStageForm.value.stage) {
+        console.log('boink');
+        if (this.isAddMode) {
+          this.createJobStage();
+        } else {
+          this.updateJobStage();
+        }
+      }
     }
+    // console.log(this.isAddMode);
   }
 
   createJobStage(): void {
-    if (this.jobStageForm !== undefined)
+    if (this.jobStageForm !== undefined) {
+      console.log(this.jobStageForm.value);
       this.apiClient
         .createJobStage(this.jobid!, this.jobStageForm.value)
         .subscribe({
@@ -86,6 +93,7 @@ export class JobStageItemComponent implements OnInit {
             console.log(error);
           },
         });
+    }
   }
 
   updateJobStage(): void {

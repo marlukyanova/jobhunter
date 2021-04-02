@@ -10,7 +10,7 @@ import { Data } from './data';
   providedIn: 'root',
 })
 export class ApiClientService {
-  private baseURL = 'http://localhost:3001';
+  baseURL: string = 'http://localhost:3001';
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,6 @@ export class ApiClientService {
   }
 
   getJobApp(id: number): Observable<JobApp> {
-    console.log('sending request...');
     return this.http.get<JobApp>(`${this.baseURL}/jobapp/${id}`);
   }
 

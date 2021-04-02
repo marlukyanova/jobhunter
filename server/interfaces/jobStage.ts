@@ -1,7 +1,8 @@
 export class JobStage {
-  'id': number;
+  'id': string;
   'createdat': number;
   'type': string;
   'date': number;
   'addinfo': string;
+  'stage': string;
 }

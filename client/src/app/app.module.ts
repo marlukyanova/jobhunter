@@ -5,9 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JobAppItemComponent } from './job-app-item/job-app-item.component';
+import { JobAppFormComponent } from './job-app-form/job-app-form.component';
 import { JobAppListComponent } from './job-app-list/job-app-list.component';
-import { JobStageItemComponent } from './job-stage-item/job-stage-item.component';
+import { JobStageFormComponent } from './job-stage-form/job-stage-form.component';
 import { JobStageListComponent } from './job-stage-list/job-stage-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -28,9 +28,9 @@ import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    JobAppItemComponent,
+    JobAppFormComponent,
     JobAppListComponent,
-    JobStageItemComponent,
+    JobStageFormComponent,
     JobStageListComponent,
     BarComponent,
     DashboardComponent,
