@@ -1,7 +1,7 @@
-const Koa = require("koa");
-const bodyParser = require("koa-bodyparser");
-const cors = require("@koa/cors");
-const router = require("./router");
+const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
+const cors = require('@koa/cors');
+const router = require('./router');
 
 const PORT = 3001;
 

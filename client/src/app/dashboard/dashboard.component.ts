@@ -9,7 +9,6 @@ import { Data } from '../data';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  // barChartData: Array<{title: string, data: Data[]}> = [];
   stageAnalysisData: Data[] = [];
   stateAnalysisData: Data[] = [];
   timesAnalysisData: Data[] = [];
@@ -26,28 +25,24 @@ export class DashboardComponent implements OnInit {
 
   getStageAnalysisData(): void {
     this.apiClient.getJobsByStages().subscribe(data => {
-      // console.log(data);
       this.stageAnalysisData = data;}
     );
   }
 
   getStateAnalysisData(): void {
     this.apiClient.getJobsByState().subscribe(data => {
-      // console.log(data);
       this.stateAnalysisData = data;
     });
   }
 
   getTimeStats(): void {
     this.apiClient.getTimeStats().subscribe(data => {
-      // console.log(data);
       this.timesAnalysisData = data;
     });
   }
 
   getStagesStats(): void {
     this.apiClient.getStagesStats().subscribe(data => {
-      // console.log(data);
       this.stagesStatsData = data;
     });
   }

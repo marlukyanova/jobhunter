@@ -20,18 +20,12 @@ export class BarComponent implements OnChanges {
   width = 550 - (this.margin * 2);
   height = 300 - (this.margin * 2);
 
-  constructor() {}
-
-
   ngOnChanges(): void {
     this.createSvg();
     this.drawBars(this.data);
   }
 
-
   createSvg(): void {
-    // d3.select('svg').remove();
-
     this.svg = d3.select(`#${this.chartid}`)
       .append('svg')
       .attr('width', this.width + (this.margin * 2))
@@ -52,7 +46,6 @@ export class BarComponent implements OnChanges {
       .attr('transform', 'translate(0,' + this.height + ')')
       .call(d3.axisBottom(x))
       .selectAll('text')
-      // .attr("transform", "translate(10,0)")
       .style('text-anchor', 'middle')
       .attr('font-size', '12px');
 

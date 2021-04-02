@@ -7,8 +7,6 @@ export class JobAppStateService {
 
   isJobAppClosed?: boolean;
   
-  constructor() { }
-  
   getJobAppState(): boolean {
     return this.isJobAppClosed!; 
   }

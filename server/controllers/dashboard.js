@@ -19,7 +19,7 @@ exports.getJobAppsByState = async (ctx) => {
 };
 
 exports.getTimeStats = async (ctx) => {
-  try{
+  try {
     ctx.body = await dashboard.getTimeStats();
     ctx.status = 200;
   } catch (err) {
@@ -29,7 +29,6 @@ exports.getTimeStats = async (ctx) => {
 
 exports.getStagesStats = async (ctx) => {
   try {
-    // console.log('got request');
     ctx.body = await dashboard.getStagesStats();
     ctx.status = 200;
   } catch (err) {

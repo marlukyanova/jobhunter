@@ -53,7 +53,6 @@ export class JobStageItemComponent implements OnInit {
 
   getJobStage(): void {
     this.apiClient.getJobStage(this.jobid!, this.stageid!).subscribe((data) => {
-      console.log(data);
       this.jobStageForm = new FormGroup({
         stage: new FormControl(data.type ? data.type : ''),
         createdat: new FormControl(

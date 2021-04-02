@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ApiClientService } from '../api-client.service';
 import { JobAppStateService } from '../job-app-state.service';
-import { FormGroup, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { JobStage } from '../jobstage';
 
@@ -132,6 +132,5 @@ export class JobAppItemComponent implements OnInit {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate(uri));
   }
-
 
 }

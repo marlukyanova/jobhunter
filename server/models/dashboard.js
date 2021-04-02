@@ -1,6 +1,6 @@
 const client = require('./index');
 
-exports.getJobAppsByStages = async() => {
+exports.getJobAppsByStages = async () => {
   const query = `
                 SELECT 'Application' AS stage, COUNT(*) AS number 
                 FROM jobapp
@@ -14,13 +14,13 @@ exports.getJobAppsByStages = async() => {
   const res = queryRes.rows.map((row) => {
     return {
       description: row.stage,
-      number: parseInt(row.number)
+      number: parseInt(row.number),
     };
   });
   return res;
 };
 
-exports.getJobAppByState = async() => {
+exports.getJobAppByState = async () => {
   const query = `
                 SELECT state, COUNT(*)
                 FROM jobapp
@@ -31,13 +31,13 @@ exports.getJobAppByState = async() => {
   const res = queryRes.rows.map((row) => {
     return {
       description: row.state,
-      number: parseInt(row.count)
+      number: parseInt(row.count),
     };
   });
   return res;
 };
 
-exports.getTimeStats = async() => {
+exports.getTimeStats = async () => {
   const query = `
                 SELECT ROUND(AVG(c.diff)) AS AVG, MAX(c.diff) AS MAX, MIN(c.diff) AS MIN
                 FROM
@@ -47,15 +47,14 @@ exports.getTimeStats = async() => {
                 ORDER BY diff) AS c;
                 `;
   const queryRes = await client.query(query);
-  // return queryRes.rows[0];
   const res = [];
-  res.push({description: 'Minimum', number: queryRes.rows[0].min});
-  res.push({description: 'Maximum', number: queryRes.rows[0].max});
-  res.push({description: 'Average', number: queryRes.rows[0].avg});
+  res.push({ description: 'Minimum', number: queryRes.rows[0].min });
+  res.push({ description: 'Maximum', number: queryRes.rows[0].max });
+  res.push({ description: 'Average', number: queryRes.rows[0].avg });
   return res;
 };
 
-exports.getStagesStats = async() => {
+exports.getStagesStats = async () => {
   const query = `
                 SELECT ROUND(AVG(s.count)) AS AVG, MAX(s.count) AS MAX, MIN(s.count) AS MIN
                 FROM 
@@ -65,8 +64,8 @@ exports.getStagesStats = async() => {
                 `;
   const queryRes = await client.query(query);
   const res = [];
-  res.push({description: 'Minimum', number: queryRes.rows[0].min});
-  res.push({description: 'Maximum', number: queryRes.rows[0].max});
-  res.push({description: 'Average', number: queryRes.rows[0].avg});
+  res.push({ description: 'Minimum', number: queryRes.rows[0].min });
+  res.push({ description: 'Maximum', number: queryRes.rows[0].max });
+  res.push({ description: 'Average', number: queryRes.rows[0].avg });
   return res;
-}
+};

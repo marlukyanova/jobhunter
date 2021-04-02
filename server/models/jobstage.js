@@ -1,12 +1,10 @@
-const client = require("./index");
+const client = require('./index');
 
 exports.getAll = async (id) => {
-  // console.log('running query');
   const queryRes = await client.query(
     'select * from jobstage where jobappid = $1',
     [id]
   );
-  // console.log(res.rows);
   const res = queryRes.rows.map((row) => {
     return {
       id: row.id,
@@ -19,11 +17,9 @@ exports.getAll = async (id) => {
 };
 
 exports.getStage = async (stageid) => {
-  // console.log('running a query for stageid', stageid);
   const queryRes = await client.query('select * from jobstage where id = $1', [
     stageid,
   ]);
-  // console.log(queryRes.rows);
   const res = {
     id: queryRes.rows[0].id,
     createdat: new Date(queryRes.rows[0].createdat),
@@ -57,16 +53,11 @@ exports.createStage = async (id, stage) => {
     stage.addinfo,
     parseInt(id),
   ];
-  // console.log('running a request with values', values);
   const res = await client.query(query, values);
-  // console.log(res.rows[0]);
-  //TODO: return jobapp and stage
   return res.rows[0];
 };
 
 exports.editStage = async (stageid, stage) => {
-  // console.log('running query', stageid, stage);
-  //TODO: check transactions in postgres
   const query = `
                 WITH src AS (
                   UPDATE jobstage
@@ -86,7 +77,5 @@ exports.editStage = async (stageid, stage) => {
                 RETURNING *;`;
   const values = [stage.stage, stage.date, stage.addinfo, parseInt(stageid)];
   const res = await client.query(query, values);
-  // console.log(res.rows[0]);
-  //TODO: decide what to return, ideally return updated jobapp and updated stage
   return res.rows[0];
 };

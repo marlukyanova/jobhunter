@@ -1,7 +1,6 @@
 const client = require('./index');
 
 exports.getAll = async () => {
-  // console.log('getting all jobapps from db');
   const queryRes = await client.query('select * from jobapp');
   const res = queryRes.rows.map((row) => {
     return {
@@ -14,14 +13,11 @@ exports.getAll = async () => {
       stage: row.stage,
     };
   });
-  // console.log(res);
   return res;
 };
 
 exports.getJobApp = async (id) => {
-  // console.log('running db query');
   const queryRes = await client.query('select * from jobapp where id=$1', [id]);
-  // console.log(res.rows[0]);
   const res = {
     id: queryRes.rows[0].id,
     createdat: new Date(queryRes.rows[0].createdat),
@@ -53,14 +49,11 @@ exports.createJobApp = async (job) => {
     job.state,
     job.stage,
   ];
-  // console.log('creating new job in db with values', values);
   const res = await client.query(query, values);
-  // console.log('result', res.rows[0]);
   return res.rows[0];
 };
 
 exports.editJobApp = async (id, job) => {
-  // console.log('data to update', job);
   const query = `
                 UPDATE jobapp
                 SET 
@@ -90,8 +83,6 @@ exports.editJobApp = async (id, job) => {
     job.closedreason,
     id,
   ];
-  // console.log('updating with values', values);
   const res = await client.query(query, values);
-  // console.log(res.rows[0]);
   return res.rows;
 };
