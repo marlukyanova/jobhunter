@@ -79,6 +79,7 @@ Install Angular Materual with following settings:
 * [Angular Material](https://material.angular.io/)
 * [D3](https://d3js.org/)
 * [Koa](https://koajs.com/)
+* [Postgres](https://www.postgresql.org/)
 
 ## Author
 
