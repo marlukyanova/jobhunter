@@ -81,6 +81,13 @@ Install Angular Material with following settings:
 * [Koa](https://koajs.com/)
 * [Postgres](https://www.postgresql.org/)
 
+## Further improvements
+
+Next steps:
+- Refactor to use Sequelize
+- Authentication
+- Improve dashboard
+
 ## Author
 
 Maria Lukyanova - [GitHub](https://github.com/marlukyanova) - [LinkedIn](www.linkedin.com/in/marlukyanova)
