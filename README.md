@@ -67,7 +67,7 @@ CREATE TABLE jobstage (
    ng serve --open
    ```
    
-Install Angular Materual with following settings: 
+Install Angular Material with following settings: 
 - prebuilt theme name: deeppurple-amber.css
 - global Angular Material typography styles: yes
 - BrowserAnimationModules: no
