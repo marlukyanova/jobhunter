@@ -7,6 +7,7 @@ JobHunter is a tool to track your job applications. Keep all information about j
 <p align="center">
   <img src="images/jobhunter-main.png" width="700"/>
   <img src="images/jobhunter-jobapp.png" width="700"/>
+  <img src="images/jobhunter-dashboard.png" width="700"/>
 </p>
 
 ## Getting started
